@@ -17,14 +17,14 @@ const Projects: React.FC = () => {
     {
       id: 'startup-strategy',
       title: 'Startup Strategy & Scale',
-      description: 'From concept to €1M+ ARR, I help startups develop winning strategies, secure funding, and scale operations effectively.',
+      description: 'Scale from €0 to €1M+ ARR in 12-18 months. I\'ve done it 3 times across different sectors - nonprofit, fintech, and consulting. Get the proven playbook.',
       icon: <TrendingUp className="w-6 h-6" />,
       color: 'hover:border-t-blue-500'
     },
     {
       id: 'stakeholder-alignment',
       title: 'Stakeholder Alignment',
-      description: 'Expert in aligning diverse stakeholders across government, corporate, and startup ecosystems to drive results.',
+      description: 'Align government, corporate, and startup stakeholders to triple your KPIs. I\'ve coordinated across 122 communities and 3 government departments.',
       icon: <UserCheck className="w-6 h-6" />,
       color: 'hover:border-t-purple-500',
       isHighlighted: true
@@ -32,28 +32,28 @@ const Projects: React.FC = () => {
     {
       id: 'innovation-programs',
       title: 'Innovation Programs',
-      description: 'Design and implement innovation initiatives, co-working spaces, and tech incubators that create thriving communities.',
+      description: 'Launch tech incubators and innovation hubs that become regional leaders. Built Ireland\'s first regional bank tech incubator across 8 counties.',
       icon: <Lightbulb className="w-6 h-6" />,
       color: 'hover:border-t-orange-500'
     },
     {
       id: 'fundraising-partnerships',
       title: 'Fundraising & Partnerships',
-      description: 'Proven track record in securing philanthropic, government, and corporate funding while building strategic partnerships.',
+      description: 'Secure €1M+ in funding across government, philanthropic, and VC sources. Track record includes partnerships with SOLAS, IDA, Enterprise Ireland.',
       icon: <DollarSign className="w-6 h-6" />,
       color: 'hover:border-t-green-500'
     },
     {
       id: 'board-advisory',
-      title: 'Board Advisory',
-      description: 'Currently holding 3 board seats with 2 chairman roles, I bring governance expertise and strategic oversight.',
+      title: 'Board Advisory & Governance',
+      description: 'Build boards from scratch or optimize existing governance. Currently chairing 2 boards, built 2 from inception to high-performing teams.',
       icon: <Target className="w-6 h-6" />,
       color: 'hover:border-t-indigo-500'
     },
     {
-      id: 'idea-prototyping',
-      title: 'Idea Prototyping',
-      description: 'Transform concepts into testable prototypes, validate ideas quickly, and iterate based on feedback to minimize risk.',
+      id: 'team-leadership',
+      title: 'Team Building & Leadership',
+      description: 'Build teams that rate 4.7/5 for loving their work while tripling performance targets. Hired and led teams of 12+ across multiple countries.',
       icon: <Users className="w-6 h-6" />,
       color: 'hover:border-t-cyan-500'
     }

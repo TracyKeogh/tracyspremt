@@ -6,9 +6,9 @@ const Contact: React.FC = () => {
     <section className="py-20 bg-gradient-to-br from-gray-800 to-gray-900 text-white">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-light mb-6">Say Hi</h2>
+          <h2 className="text-4xl md:text-5xl font-light mb-6">Ready to Scale?</h2>
           <p className="text-2xl text-gray-300 mb-12">
-            The best stuff starts with a weird idea.
+            Get a custom roadmap to €1M+ ARR in our first conversation.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -26,12 +26,12 @@ const Contact: React.FC = () => {
 
             <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 group">
               <Calendar className="w-8 h-8 text-orange-400 mb-4 mx-auto group-hover:scale-110 transition-transform duration-200" />
-              <h3 className="text-xl font-semibold mb-3">Book a Chat</h3>
+              <h3 className="text-xl font-semibold mb-3">Strategic Assessment Call</h3>
               <a 
-                href="#" 
+                href="mailto:hello@spremtlabs.com?subject=Strategic Assessment Call Request" 
                 className="text-orange-400 hover:text-orange-300 transition-colors duration-200 flex items-center justify-center"
               >
-                Schedule 30 minutes
+                30-minute consultation
                 <ExternalLink className="w-4 h-4 ml-2" />
               </a>
             </div>

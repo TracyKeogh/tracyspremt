@@ -30,20 +30,26 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-6 h-screen flex items-center justify-center">
         <div className="text-center max-w-4xl">
           <div className="mb-8">
-            <h1 className="text-5xl md:text-7xl font-light text-gray-800 mb-6 leading-tight">
-              Hi, I'm Tracy.
+            <h1 className="text-4xl md:text-6xl font-light text-gray-800 mb-6 leading-tight">
+              I Scale Startups & Organizations from €0 to €1M+ ARR
             </h1>
-            <div className="text-2xl md:text-3xl text-gray-600 leading-relaxed">
-              <p className="mb-2">I build</p>
-              <div className="inline-block min-w-[200px] text-left">
-                <span 
-                  key={currentWord}
-                  className="text-blue-600 font-medium animate-fade-in"
-                >
-                  {words[currentWord]}
-                </span>
-              </div>
-              <p className="mt-2">with great people.</p>
+            <div className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8">
+              <p className="mb-4">Through strategic stakeholder alignment, I've helped governments, banks, and startups <span className="text-blue-600 font-medium">triple their targets</span> while building teams that rate <span className="text-blue-600 font-medium">4.7/5</span> for loving their work.</p>
+              <p className="text-lg text-gray-500">10+ years • €1M+ ARR achieved • 6,878 jobs unlocked • 3 board seats</p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="#contact" 
+                className="bg-blue-600 text-white px-8 py-4 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200 text-center"
+              >
+                Book Strategic Assessment Call
+              </a>
+              <a 
+                href="#projects" 
+                className="border border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-medium hover:border-gray-400 transition-colors duration-200 text-center"
+              >
+                See How I Help
+              </a>
             </div>
           </div>
         </div>

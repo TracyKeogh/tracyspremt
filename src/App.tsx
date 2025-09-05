@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
+import Testimonials from './components/Testimonials';
 import Media from './components/Media';
 import About from './components/About';
 import Now from './components/Now';
@@ -17,6 +18,7 @@ function App() {
       <div id="projects">
         <Projects />
       </div>
+      <Testimonials />
       <div id="media">
         <Media />
       </div>
