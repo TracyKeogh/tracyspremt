@@ -17,7 +17,7 @@ const Navigation: React.FC = () => {
   const navItems = [
     { label: 'Home', href: '#home' },
     { label: 'Services', href: '#projects' },
-    { label: 'Results', href: '#testimonials' },
+    { label: 'Results', href: '#results' },
     { label: 'Media', href: '#media' },
     { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' }
