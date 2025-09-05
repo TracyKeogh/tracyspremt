@@ -17,14 +17,14 @@ const Projects: React.FC = () => {
     {
       id: 'startup-strategy',
       title: 'Startup Strategy & Scale',
-      description: 'Scale from €0 to €1M+ ARR in 12-18 months. I\'ve done it 3 times across different sectors - nonprofit, fintech, and consulting. Get the proven playbook.',
+      description: 'Strategic guidance for scaling organizations from concept to sustainable revenue. Proven experience building Grow Remote to €1M+ ARR in year one.',
       icon: <TrendingUp className="w-6 h-6" />,
       color: 'hover:border-t-blue-500'
     },
     {
       id: 'stakeholder-alignment',
       title: 'Stakeholder Alignment',
-      description: 'Align government, corporate, and startup stakeholders to triple your KPIs. I\'ve coordinated across 122 communities and 3 government departments.',
+      description: 'Expert in aligning diverse stakeholders across government, corporate, and startup ecosystems. Coordinated across 122 communities and launched 3 government strategies.',
       icon: <UserCheck className="w-6 h-6" />,
       color: 'hover:border-t-purple-500',
       isHighlighted: true
@@ -39,7 +39,7 @@ const Projects: React.FC = () => {
     {
       id: 'fundraising-partnerships',
       title: 'Fundraising & Partnerships',
-      description: 'Secure €1M+ in funding across government, philanthropic, and VC sources. Track record includes partnerships with SOLAS, IDA, Enterprise Ireland.',
+      description: 'Proven track record securing government and philanthropic funding. Established partnerships with SOLAS, IDA, Enterprise Ireland and raised funding for multiple ventures.',
       icon: <DollarSign className="w-6 h-6" />,
       color: 'hover:border-t-green-500'
     },
