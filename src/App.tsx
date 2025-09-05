@@ -3,7 +3,6 @@ import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Results from './components/Results';
-import Media from './components/Media';
 import About from './components/About';
 import Contact from './components/Contact';
 
@@ -18,9 +17,6 @@ function App() {
         <Projects />
       </div>
       <Results />
-      <div id="media">
-        <Media />
-      </div>
       <div id="about">
         <About />
       </div>
