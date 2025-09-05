@@ -14,18 +14,18 @@ const Results: React.FC = () => {
     {
       organization: "Bank of Ireland",
       sector: "Financial Services",
-      challenge: "Launch regional innovation program",
+      challenge: "Launch regional innovation programme",
       result: "First Regional Tech Incubator",
       details: "Launched a national incubator for Ireland's largest bank",
-      metrics: ["Supported 200+ startups", "Ran national pre-accelerators", "Full pipeline management for multiple cohorts"]
+      metrics: ["Supported 200+ start-ups", "Ran national pre-accelerators", "Full pipeline management for multiple cohorts"]
     },
     {
       organization: "Multiple Startups",
       sector: "Cross-Sector",
       challenge: "Strategic alignment and funding",
       result: "Outcome driven",
-      details: "I have a generalist skillset which has been used to build websites, set up companies, and drive national sales.",
-      metrics: ["Launched 3 government strategies", "Forbes, RTE, Harvard Business Review", "Tripled KPIs - 10x market average", "Raised 1.5M+ in corporate sponsorships, philanthropic, government funding and debt funding"]
+      details: "I have a generalist skillset that has been used to build websites, set up companies, and drive national sales.",
+      metrics: ["Launched 3 government strategies", "Forbes, RTÉ, Harvard Business Review", "Tripled KPIs - 10x market average", "Raised €1.5M+ in corporate sponsorships, philanthropic, government funding and debt funding"]
     }
   ];
 

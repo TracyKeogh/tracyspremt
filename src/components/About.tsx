@@ -53,11 +53,11 @@ const About: React.FC = () => {
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-gray-600"><strong>3 Government Strategies Launched</strong> - Including Oireachtas briefings and national programs</p>
+                  <p className="text-gray-600"><strong>3 Government Strategies Launched</strong> - Including Oireachtas briefings and national programmes</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-teal-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-gray-600"><strong>Europe's Largest Remote Training</strong> - Recognized by SOLAS as among their strongest programs</p>
+                  <p className="text-gray-600"><strong>Europe's Largest Remote Training</strong> - Recognised by SOLAS as among their strongest programmes</p>
                 </div>
               </div>
               <div className="space-y-3">
@@ -67,7 +67,7 @@ const About: React.FC = () => {
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-pink-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-gray-600"><strong>Forbes, RTE, Harvard Business Review</strong> - High-profile media coverage and speaking</p>
+                  <p className="text-gray-600"><strong>Forbes, RTÉ, Harvard Business Review</strong> - High-profile media coverage and speaking</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></div>

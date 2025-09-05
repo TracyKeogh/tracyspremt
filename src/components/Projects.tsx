@@ -24,7 +24,7 @@ const Projects: React.FC = () => {
     {
       id: 'founder-support',
       title: 'Founder Support',
-      description: 'Having built the team + structures to build something from 0-1, I work 1-1 to support founders on the same path.',
+      description: 'Having built the teams and structures to take something from 0-1, I work 1-1 to support founders on the same path.',
       icon: <UserCheck className="w-6 h-6" />,
       color: 'hover:border-t-purple-500',
       isHighlighted: true
@@ -46,7 +46,7 @@ const Projects: React.FC = () => {
     {
       id: 'board-advisory',
       title: 'Non-Profit Board Support',
-      description: 'Support in setting up non-profit boards from scratch or optimize existing governance structures.',
+      description: 'Support in setting up non-profit boards from scratch or optimising existing governance structures.',
       icon: <Target className="w-6 h-6" />,
       color: 'hover:border-t-indigo-500'
     },
@@ -70,7 +70,7 @@ const Projects: React.FC = () => {
           <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-4">
             How I Help
           </h2>
-          <p className="text-xl text-gray-600">generalist skillset applied to...</p>
+          <p className="text-xl text-gray-600">Generalist skillset applied to...</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
