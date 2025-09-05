@@ -5,7 +5,6 @@ import Projects from './components/Projects';
 import Testimonials from './components/Testimonials';
 import Media from './components/Media';
 import About from './components/About';
-import Now from './components/Now';
 import Contact from './components/Contact';
 
 function App() {
@@ -24,9 +23,6 @@ function App() {
       </div>
       <div id="about">
         <About />
-      </div>
-      <div id="now">
-        <Now />
       </div>
       <div id="contact">
         <Contact />

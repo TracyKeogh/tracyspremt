@@ -16,10 +16,10 @@ const Navigation: React.FC = () => {
 
   const navItems = [
     { label: 'Home', href: '#home' },
-    { label: 'Projects', href: '#projects' },
+    { label: 'Services', href: '#projects' },
+    { label: 'Results', href: '#testimonials' },
     { label: 'Media', href: '#media' },
     { label: 'About', href: '#about' },
-    { label: 'Now', href: '#now' },
     { label: 'Contact', href: '#contact' }
   ];
 
