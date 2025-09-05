@@ -8,7 +8,7 @@ const Hero: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWord((prev) => (prev + 1) % words.length);
-    }, 2000);
+    }, 1200);
     return () => clearInterval(interval);
   }, []);
 
