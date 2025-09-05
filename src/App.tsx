@@ -1,32 +1,22 @@
 import React from 'react';
-import Navigation from './components/Navigation';
-import Hero from './components/Hero';
-import Projects from './components/Projects';
-import Testimonials from './components/Testimonials';
-import Media from './components/Media';
+import NewNavigation from './components/NewNavigation';
+import NewHero from './components/NewHero';
+import Problems from './components/Problems';
+import Solution from './components/Solution';
+import Results from './components/Results';
 import About from './components/About';
 import Contact from './components/Contact';
 
 function App() {
   return (
     <div className="min-h-screen bg-white">
-      <Navigation />
-      <div id="home">
-        <Hero />
-      </div>
-      <div id="projects">
-        <Projects />
-      </div>
-      <Testimonials />
-      <div id="media">
-        <Media />
-      </div>
-      <div id="about">
-        <About />
-      </div>
-      <div id="contact">
-        <Contact />
-      </div>
+      <NewNavigation />
+      <NewHero />
+      <Problems />
+      <Solution />
+      <Results />
+      <About />
+      <Contact />
     </div>
   );
 }
