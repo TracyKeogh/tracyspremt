@@ -24,8 +24,8 @@ const Results: React.FC = () => {
       sector: "Cross-Sector",
       challenge: "Strategic alignment and funding",
       result: "Outcome driven",
-      details: "I have a generalist skillset which has been used to build websites, set up companies, and drive national sales. Raised 1.5M+ in corporate sponsorships, philanthropic, government funding and debt funding.",
-      metrics: ["Launched 3 government strategies", "Forbes, RTE, Harvard Business Review", "Tripled KPIs - 10x market average", "International expansion"]
+      details: "I have a generalist skillset which has been used to build websites, set up companies, and drive national sales.",
+      metrics: ["Launched 3 government strategies", "Forbes, RTE, Harvard Business Review", "Tripled KPIs - 10x market average", "Raised 1.5M+ in corporate sponsorships, philanthropic, government funding and debt funding"]
     }
   ];
 
