@@ -176,10 +176,6 @@ const Media: React.FC = () => {
             <Mic className="w-8 h-8 text-blue-600 mr-3" />
             <FileText className="w-8 h-8 text-orange-600" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-4">
-            Where systems meet storytelling
-          </h2>
-          <p className="text-lg text-gray-600 mb-2">Featured in + Trusted by</p>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-orange-500 mx-auto rounded-full"></div>
         </div>
 
