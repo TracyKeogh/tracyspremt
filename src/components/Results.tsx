@@ -23,8 +23,8 @@ const Results: React.FC = () => {
       organization: "Multiple Startups",
       sector: "Cross-Sector",
       challenge: "Strategic alignment and funding",
-      result: "€1M+ Funding Raised",
-      details: "Aligned stakeholders across government, corporate, and startup ecosystems for coordinated growth",
+      result: "Outcome driven",
+      details: "I have a generalist skillset which has been used to build websites, set up companies, and drive national sales. Raised 1.5M+ in corporate sponsorships, philanthropic, government funding and debt funding.",
       metrics: ["Launched 3 government strategies", "Forbes, RTE, Harvard Business Review", "Tripled KPIs - 10x market average", "International expansion"]
     }
   ];
