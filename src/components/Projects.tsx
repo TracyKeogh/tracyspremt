@@ -39,7 +39,7 @@ const Projects: React.FC = () => {
     {
       id: 'fundraising-partnerships',
       title: 'Fundraising & Partnerships',
-      description: 'Support in raising government funding, debt funding, commercial sponsorships, philanthropic funding (proven track record from previous ventures). Established partnerships with SOLAS, IDA, Enterprise Ireland.',
+      description: 'Support in raising government funding, debt funding, commercial sponsorships, philanthropic funding.',
       icon: <DollarSign className="w-6 h-6" />,
       color: 'hover:border-t-green-500'
     },
