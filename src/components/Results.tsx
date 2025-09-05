@@ -7,8 +7,8 @@ const Results: React.FC = () => {
       organization: "Grow Remote",
       sector: "Nonprofit",
       challenge: "Scale from concept to sustainable revenue",
-      result: "€1M ARR in Year 1",
-      details: "Built Europe's largest remote work training program, recognized by SOLAS as 'the best course we've ever run'",
+      result: "€1M+ ARR from Year 1",
+      details: "Built Europe's largest products and services for the remote work sector",
       metrics: ["6,878 jobs unlocked", "122 communities", "4.7/5 team satisfaction"]
     },
     {
@@ -16,8 +16,8 @@ const Results: React.FC = () => {
       sector: "Financial Services",
       challenge: "Launch regional innovation program",
       result: "First Regional Tech Incubator",
-      details: "Created thriving innovation hub across 8 counties, establishing new job functions and startup pipeline",
-      metrics: ["8 counties covered", "25+ coworking spaces", "New innovation division"]
+      details: "Launched a national incubator for Ireland's largest bank",
+      metrics: ["Supported 200+ startups", "Ran national pre-accelerators", "Full pipeline management for multiple cohorts"]
     },
     {
       organization: "Multiple Startups",
@@ -25,7 +25,7 @@ const Results: React.FC = () => {
       challenge: "Strategic alignment and funding",
       result: "€1M+ Funding Raised",
       details: "Aligned stakeholders across government, corporate, and startup ecosystems for coordinated growth",
-      metrics: ["3 government strategies", "Multiple funding rounds", "International expansion"]
+      metrics: ["Launched 3 government strategies", "Forbes, RTE, Harvard Business Review", "Tripled KPIs - 10x market average", "International expansion"]
     }
   ];
 
