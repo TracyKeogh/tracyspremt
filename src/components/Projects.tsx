@@ -77,10 +77,10 @@ const Projects: React.FC = () => {
           {services.map((service) => (
             <div
               key={service.id}
-              className={`relative bg-white rounded-lg p-6 border transition-all duration-300 hover:shadow-md ${
+              className={`relative bg-white rounded-lg p-6 border transition-all duration-300 cursor-pointer hover:shadow-lg hover:border-blue-400 hover:bg-blue-50 ${
                 service.isHighlighted 
                   ? 'border-blue-300 bg-gradient-to-br from-blue-50 to-purple-50' 
-                  : 'border-gray-200 hover:border-gray-300'
+                  : 'border-gray-200'
               }`}
             >
               <div className="mb-4">
