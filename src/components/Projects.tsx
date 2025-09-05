@@ -77,11 +77,7 @@ const Projects: React.FC = () => {
           {services.map((service) => (
             <div
               key={service.id}
-              className={`relative bg-white rounded-lg p-6 border border-t-4 border-t-transparent transition-all duration-300 cursor-pointer hover:shadow-lg ${service.color} ${
-                service.isHighlighted 
-                  ? 'border-blue-300 bg-gradient-to-br from-blue-50 to-purple-50' 
-                  : 'border-gray-200'
-              }`}
+              className={`relative bg-white rounded-lg p-6 border border-t-4 border-t-transparent transition-all duration-300 cursor-pointer hover:shadow-lg ${service.color} border-gray-200`}
             >
               <div className="mb-4">
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
