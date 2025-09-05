@@ -73,35 +73,21 @@ const Projects: React.FC = () => {
           <p className="text-xl text-gray-600">Strategic consulting across the startup ecosystem</p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {services.map((service) => (
             <div
               key={service.id}
-              className={`group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer border ${
+              className={`relative bg-white rounded-lg p-6 border transition-all duration-300 hover:shadow-md ${
                 service.isHighlighted 
-                  ? 'border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50 ring-2 ring-purple-200' 
-                  : 'border-gray-100'
-              } ${
-                selectedService === service.id ? 'ring-2 ring-blue-400' : ''
+                  ? 'border-blue-300 bg-gradient-to-br from-blue-50 to-purple-50' 
+                  : 'border-gray-200 hover:border-gray-300'
               }`}
-              onClick={() => handleServiceClick(service)}
             >
-              <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${service.color} rounded-t-2xl`}></div>
-              
-              <div className="mb-6">
-                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r ${service.color} text-white mb-4`}>
-                  {service.icon}
-                </div>
-                <h3 className="text-2xl font-semibold text-gray-800 mb-2">{service.title}</h3>
+              <div className="mb-4">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
               </div>
 
-              <p className="text-gray-600 leading-relaxed">{service.description}</p>
-              
-              {service.isHighlighted && (
-                <div className="absolute top-4 right-4">
-                  <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"></div>
-                </div>
-              )}
+              <p className="text-gray-600 text-sm leading-relaxed">{service.description}</p>
             </div>
           ))}
         </div>
