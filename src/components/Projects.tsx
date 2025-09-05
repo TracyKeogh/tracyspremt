@@ -17,14 +17,14 @@ const Projects: React.FC = () => {
     {
       id: 'startup-strategy',
       title: 'Startup Strategy & Scale',
-      description: 'Strategic guidance for scaling organizations from concept to sustainable revenue. Proven experience building Grow Remote to €1M+ ARR in year one.',
+      description: 'Strategic guidance for scaling organizations from concept to sustainable revenue.',
       icon: <TrendingUp className="w-6 h-6" />,
       color: 'hover:border-t-blue-500'
     },
     {
       id: 'stakeholder-alignment',
       title: 'Stakeholder Alignment',
-      description: 'Expert in aligning diverse stakeholders across government, corporate, and startup ecosystems. Coordinated across 122 communities and launched 3 government strategies.',
+      description: 'Expert in aligning diverse stakeholders across government, corporate, and startup ecosystems.',
       icon: <UserCheck className="w-6 h-6" />,
       color: 'hover:border-t-purple-500',
       isHighlighted: true
@@ -39,21 +39,21 @@ const Projects: React.FC = () => {
     {
       id: 'fundraising-partnerships',
       title: 'Fundraising & Partnerships',
-      description: 'Proven track record securing government and philanthropic funding. Established partnerships with SOLAS, IDA, Enterprise Ireland and raised funding for multiple ventures.',
+      description: 'Support in raising government funding, debt funding, commercial sponsorships, philanthropic funding (proven track record from previous ventures). Established partnerships with SOLAS, IDA, Enterprise Ireland.',
       icon: <DollarSign className="w-6 h-6" />,
       color: 'hover:border-t-green-500'
     },
     {
       id: 'board-advisory',
-      title: 'Board Advisory & Governance',
-      description: 'Build boards from scratch or optimize existing governance. Currently chairing 2 boards, built 2 from inception to high-performing teams.',
+      title: 'Non-Profit Board Support',
+      description: 'Support in setting up non-profit boards from scratch or optimize existing governance structures.',
       icon: <Target className="w-6 h-6" />,
       color: 'hover:border-t-indigo-500'
     },
     {
       id: 'team-leadership',
-      title: 'Team Building & Leadership',
-      description: 'Build teams that rate 4.7/5 for loving their work while tripling performance targets. Hired and led teams of 12+ across multiple countries.',
+      title: 'Rapid Prototyping & Ideation',
+      description: 'Facilitate rapid prototyping and ideation sessions to accelerate product development and innovation processes.',
       icon: <Users className="w-6 h-6" />,
       color: 'hover:border-t-cyan-500'
     }
@@ -70,7 +70,7 @@ const Projects: React.FC = () => {
           <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-4">
             How I Help
           </h2>
-          <p className="text-xl text-gray-600">Strategic consulting across the startup ecosystem</p>
+          <p className="text-xl text-gray-600">generalist skillset applied to...</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
