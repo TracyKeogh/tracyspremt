@@ -19,14 +19,14 @@ const Projects: React.FC = () => {
       title: 'Startup Strategy & Scale',
       description: 'From concept to €1M+ ARR, I help startups develop winning strategies, secure funding, and scale operations effectively.',
       icon: <TrendingUp className="w-6 h-6" />,
-      color: 'from-blue-500 to-blue-600'
+      color: 'hover:border-t-blue-500'
     },
     {
       id: 'stakeholder-alignment',
       title: 'Stakeholder Alignment',
       description: 'Expert in aligning diverse stakeholders across government, corporate, and startup ecosystems to drive results.',
       icon: <UserCheck className="w-6 h-6" />,
-      color: 'from-purple-500 to-pink-500',
+      color: 'hover:border-t-purple-500',
       isHighlighted: true
     },
     {
@@ -34,28 +34,28 @@ const Projects: React.FC = () => {
       title: 'Innovation Programs',
       description: 'Design and implement innovation initiatives, co-working spaces, and tech incubators that create thriving communities.',
       icon: <Lightbulb className="w-6 h-6" />,
-      color: 'from-orange-500 to-red-500'
+      color: 'hover:border-t-orange-500'
     },
     {
       id: 'fundraising-partnerships',
       title: 'Fundraising & Partnerships',
       description: 'Proven track record in securing philanthropic, government, and corporate funding while building strategic partnerships.',
       icon: <DollarSign className="w-6 h-6" />,
-      color: 'from-green-500 to-teal-600'
+      color: 'hover:border-t-green-500'
     },
     {
       id: 'board-advisory',
       title: 'Board Advisory',
       description: 'Currently holding 3 board seats with 2 chairman roles, I bring governance expertise and strategic oversight.',
       icon: <Target className="w-6 h-6" />,
-      color: 'from-indigo-500 to-purple-600'
+      color: 'hover:border-t-indigo-500'
     },
     {
       id: 'idea-prototyping',
       title: 'Idea Prototyping',
       description: 'Transform concepts into testable prototypes, validate ideas quickly, and iterate based on feedback to minimize risk.',
       icon: <Users className="w-6 h-6" />,
-      color: 'from-cyan-500 to-blue-500'
+      color: 'hover:border-t-cyan-500'
     }
   ];
 
@@ -77,7 +77,7 @@ const Projects: React.FC = () => {
           {services.map((service) => (
             <div
               key={service.id}
-              className={`relative bg-white rounded-lg p-6 border transition-all duration-300 cursor-pointer hover:shadow-lg hover:border-blue-400 hover:bg-blue-50 ${
+              className={`relative bg-white rounded-lg p-6 border border-t-4 border-t-transparent transition-all duration-300 cursor-pointer hover:shadow-lg ${service.color} ${
                 service.isHighlighted 
                   ? 'border-blue-300 bg-gradient-to-br from-blue-50 to-purple-50' 
                   : 'border-gray-200'
