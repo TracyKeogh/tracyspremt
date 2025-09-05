@@ -22,9 +22,9 @@ const Projects: React.FC = () => {
       color: 'hover:border-t-blue-500'
     },
     {
-      id: 'stakeholder-alignment',
-      title: 'Stakeholder Alignment',
-      description: 'Expert in aligning diverse stakeholders across government, corporate, and startup ecosystems.',
+      id: 'founder-support',
+      title: 'Founder Support',
+      description: 'Having built the team + structures to build something from 0-1, I work 1-1 to support founders on the same path.',
       icon: <UserCheck className="w-6 h-6" />,
       color: 'hover:border-t-purple-500',
       isHighlighted: true
