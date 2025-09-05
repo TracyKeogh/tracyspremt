@@ -65,20 +65,20 @@ const Testimonials: React.FC = () => {
               <h3 className="text-2xl font-semibold text-gray-800 mb-6">By The Numbers</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-600 mb-2">€1M+</div>
-                  <div className="text-sm text-gray-600">ARR Achieved</div>
+                  <div className="text-3xl font-bold text-blue-600 mb-2">10+</div>
+                  <div className="text-sm text-gray-600">Years Experience</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-green-600 mb-2">6,878</div>
-                  <div className="text-sm text-gray-600">Jobs Unlocked</div>
+                  <div className="text-3xl font-bold text-green-600 mb-2">3</div>
+                  <div className="text-sm text-gray-600">Board Seats</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-purple-600 mb-2">122</div>
-                  <div className="text-sm text-gray-600">Communities</div>
+                  <div className="text-3xl font-bold text-purple-600 mb-2">€1M+</div>
+                  <div className="text-sm text-gray-600">Funding Raised</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-orange-600 mb-2">4.7/5</div>
-                  <div className="text-sm text-gray-600">Team Rating</div>
+                  <div className="text-3xl font-bold text-orange-600 mb-2">4</div>
+                  <div className="text-sm text-gray-600">Sectors</div>
                 </div>
               </div>
             </div>
