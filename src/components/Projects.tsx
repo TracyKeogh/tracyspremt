@@ -32,7 +32,7 @@ const Projects: React.FC = () => {
     {
       id: 'innovation-programs',
       title: 'Innovation Programs',
-      description: 'Launch tech incubators and innovation hubs that become regional leaders. Built Ireland\'s first regional bank tech incubator across 8 counties.',
+      description: 'Support in various models of innovation from hackathons to change transformation programmes and technology incubators.',
       icon: <Lightbulb className="w-6 h-6" />,
       color: 'hover:border-t-orange-500'
     },
