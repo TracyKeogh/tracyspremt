@@ -24,7 +24,7 @@ const Results: React.FC = () => {
       sector: "Cross-Sector",
       challenge: "Diverse strategic challenges across sectors",
       result: "Versatile Impact",
-      details: "I developed a comprehensive skillset to tackle diverse objectives - from building websites and setting up companies to driving national sales across multiple sectors.",
+      details: "I developed a comprehensive skillset to tackle diverse objectives - from building teams, companies, and web applications, to driving PR campaigns and setting up retail units.",
       metrics: ["I launched 3 government strategies", "I secured Forbes, RTÉ, Harvard Business Review coverage", "I tripled KPIs - 10x market average", "I raised €1.5M+ across corporate sponsorships, philanthropic, government and debt funding"]
     }
   ];
