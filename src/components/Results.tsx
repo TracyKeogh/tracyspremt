@@ -8,7 +8,7 @@ const Results: React.FC = () => {
       sector: "Nonprofit",
       challenge: "Scale from concept to sustainable revenue",
       result: "€1M+ ARR from Year 1",
-      details: "Built Europe's largest products and services for the remote work sector",
+      details: "I built Europe's largest products and services for the remote work sector.",
       metrics: ["6,878 jobs unlocked", "122 communities", "4.7/5 team satisfaction"]
     },
     {
@@ -16,16 +16,16 @@ const Results: React.FC = () => {
       sector: "Financial Services",
       challenge: "Launch regional innovation programme",
       result: "First Regional Tech Incubator",
-      details: "Launched a national incubator for Ireland's largest bank",
+      details: "I launched a national incubator for Ireland's largest bank.",
       metrics: ["Supported 200+ start-ups", "Ran national pre-accelerators", "Full pipeline management for multiple cohorts"]
     },
     {
       organization: "Multiple Startups",
       sector: "Cross-Sector",
-      challenge: "Strategic alignment and funding",
-      result: "Outcome driven",
-      details: "I have a generalist skillset that has been used to build websites, set up companies, and drive national sales.",
-      metrics: ["Launched 3 government strategies", "Forbes, RTÉ, Harvard Business Review", "Tripled KPIs - 10x market average", "Raised €1.5M+ in corporate sponsorships, philanthropic, government funding and debt funding"]
+      challenge: "Diverse strategic challenges across sectors",
+      result: "Versatile Impact",
+      details: "I developed a comprehensive skillset to tackle diverse objectives - from building websites and setting up companies to driving national sales across multiple sectors.",
+      metrics: ["I launched 3 government strategies", "I secured Forbes, RTÉ, Harvard Business Review coverage", "I tripled KPIs - 10x market average", "I raised €1.5M+ across corporate sponsorships, philanthropic, government and debt funding"]
     }
   ];
 

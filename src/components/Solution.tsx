@@ -31,7 +31,7 @@ const Solution: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-6">
-            My Strategic Leadership Approach
+            Of My Strategic Leadership
           </h2>
           <p className="text-xl text-gray-600 leading-relaxed">
             I've guided organizations from concept to €1M+ ARR across nonprofits, fintech, and consulting. Here's how I solve the challenges you're facing.

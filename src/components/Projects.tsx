@@ -16,7 +16,7 @@ const Projects: React.FC = () => {
   const services: Service[] = [
     {
       id: 'startup-strategy',
-      title: 'Startup Strategy & Scale',
+      title: 'Startup Strategy & Scaling',
       description: 'Strategic guidance for scaling organizations from concept to sustainable revenue.',
       icon: <TrendingUp className="w-6 h-6" />,
       color: 'hover:border-t-blue-500'
@@ -24,38 +24,38 @@ const Projects: React.FC = () => {
     {
       id: 'founder-support',
       title: 'Founder Support',
-      description: 'Having built the teams and structures to take something from 0-1, I work 1-1 to support founders on the same path.',
+      description: 'Having built the teams and structures to take something from 0-1, I work 1-1 to drive more impact for founders on the same path.',
       icon: <UserCheck className="w-6 h-6" />,
-      color: 'hover:border-t-purple-500',
+      color: 'hover:border-t-blue-500',
       isHighlighted: true
     },
     {
       id: 'innovation-programs',
       title: 'Innovation Programs',
-      description: 'Support in various models of innovation from hackathons to change transformation programmes and technology incubators.',
+      description: 'Drive more impact in various models of innovation from hackathons to change transformation programmes and technology incubators.',
       icon: <Lightbulb className="w-6 h-6" />,
-      color: 'hover:border-t-orange-500'
+      color: 'hover:border-t-blue-500'
     },
     {
       id: 'fundraising-partnerships',
       title: 'Fundraising & Partnerships',
-      description: 'Support in raising government funding, debt funding, commercial sponsorships, philanthropic funding.',
+      description: 'Drive more impact in raising government funding, debt funding, commercial sponsorships, philanthropic funding.',
       icon: <DollarSign className="w-6 h-6" />,
-      color: 'hover:border-t-green-500'
+      color: 'hover:border-t-blue-500'
     },
     {
       id: 'board-advisory',
-      title: 'Non-Profit Board Support',
-      description: 'Support in setting up non-profit boards from scratch or optimising existing governance structures.',
+      title: 'Board Support',
+      description: 'Support in setting up boards from scratch and optimising existing governance.',
       icon: <Target className="w-6 h-6" />,
-      color: 'hover:border-t-indigo-500'
+      color: 'hover:border-t-blue-500'
     },
     {
       id: 'team-leadership',
       title: 'Rapid Prototyping & Ideation',
       description: 'Facilitate rapid prototyping and ideation sessions to accelerate product development and innovation processes.',
       icon: <Users className="w-6 h-6" />,
-      color: 'hover:border-t-cyan-500'
+      color: 'hover:border-t-blue-500'
     }
   ];
 
@@ -70,7 +70,6 @@ const Projects: React.FC = () => {
           <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-4">
             How I Help
           </h2>
-          <p className="text-xl text-gray-600">Generalist skillset applied to...</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
