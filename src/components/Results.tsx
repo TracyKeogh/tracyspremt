@@ -57,6 +57,29 @@ const Results: React.FC = () => {
             </p>
           </div>
 
+          {/* Numbers */}
+          <div className="mb-16 bg-white rounded-xl p-8 shadow-sm border border-gray-100">
+            <h3 className="text-2xl font-semibold text-gray-900 text-center mb-8">By the Numbers</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-blue-600 mb-2">10+</div>
+                <div className="text-sm text-gray-600">Years Strategic Leadership</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-600 mb-2">€1M+</div>
+                <div className="text-sm text-gray-600">ARR Achieved</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-purple-600 mb-2">3</div>
+                <div className="text-sm text-gray-600">Board Seats</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-orange-600 mb-2">4</div>
+                <div className="text-sm text-gray-600">Sectors</div>
+              </div>
+            </div>
+          </div>
+
           {/* Case Studies */}
           <div className="space-y-8 mb-16">
             {caseStudies.map((study, index) => (
@@ -126,28 +149,6 @@ const Results: React.FC = () => {
             ))}
           </div>
 
-          {/* Numbers */}
-          <div className="mt-16 bg-white rounded-xl p-8 shadow-sm border border-gray-100">
-            <h3 className="text-2xl font-semibold text-gray-900 text-center mb-8">By the Numbers</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-2">10+</div>
-                <div className="text-sm text-gray-600">Years Strategic Leadership</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 mb-2">€1M+</div>
-                <div className="text-sm text-gray-600">ARR Achieved</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-purple-600 mb-2">3</div>
-                <div className="text-sm text-gray-600">Board Seats</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-orange-600 mb-2">4</div>
-                <div className="text-sm text-gray-600">Sectors</div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
