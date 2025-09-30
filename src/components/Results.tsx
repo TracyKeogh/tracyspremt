@@ -31,15 +31,15 @@ const Results: React.FC = () => {
 
   const testimonials = [
     {
-      quote: "This is the best course we've ever run. Tracy's strategic approach to stakeholder alignment has been exceptional.",
-      author: "SOLAS",
-      role: "Ireland's Further Education & Training Authority",
+      quote: "Tracy supported our strategic review of Books at One during a period of significant change. Her fresh perspective, keen insight, and wealth of experience helped us step back and refocus on our mission, purpose, and values. With her guidance, we were able to chart a clear path forward and move confidently into the next phase of our strategic growth. I would highly recommend Tracy to any organisation navigating change or seeking to strengthen its strategic direction.",
+      author: "Aoife Gallon",
+      role: "The One Foundation",
       highlight: true
     },
     {
-      quote: "Tracy built our team culture where we rate loving coming to work 4.7/5 while tripling our performance targets.",
-      author: "Grow Remote Team",
-      role: "12-person International Team",
+      quote: "Working with Tracy as Chair of Hair Together has been exceptional. She brings clarity and direction, strengthening our foundations and enabling us to grow with confidence. Her impact has been central to our progress, we couldn't recommend her more.",
+      author: "Eileen McHugh",
+      role: "Hair Together CLG",
       highlight: false
     }
   ];
