@@ -16,7 +16,7 @@ const Results: React.FC = () => {
       sector: "Financial Services",
       challenge: "Launch regional innovation programme",
       result: "First Regional Tech Incubator",
-      details: "I launched a national incubator for Ireland's largest bank.",
+      details: "Launched and ran a national incubator for Ireland's largest bank.",
       metrics: ["Supported 200+ start-ups", "Ran national pre-accelerators", "Full pipeline management for multiple cohorts"]
     },
     {
