@@ -7,8 +7,8 @@ declare global {
   }
 }
 
-// Your Google Tag ID for tracy.spremtlabs.com
-export const GA_MEASUREMENT_ID = 'GT-NGBR9TLJ';
+// Your Google Analytics 4 Measurement ID for tracy.spremtlabs.com
+export const GA_MEASUREMENT_ID = 'G-4B9ZR1BZBL';
 
 // Initialize Google Analytics
 export const initGA = () => {
