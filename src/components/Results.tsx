@@ -6,9 +6,9 @@ const Results: React.FC = () => {
     {
       organization: "Grow Remote",
       sector: "Nonprofit",
-      challenge: "Scale from concept to sustainable revenue",
+      challenge: "Scaled from concept to sustainable revenue",
       result: "€1M+ ARR from Year 1",
-      details: "I built Europe's largest products and services for the remote work sector.",
+      details: "I built a company that created Europe's largest products and services for the remote work sector.",
       metrics: ["6,878 jobs unlocked", "122 communities", "4.7/5 team satisfaction"]
     },
     {
