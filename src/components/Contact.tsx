@@ -13,33 +13,33 @@ const Contact: React.FC = () => {
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 group">
+            <a 
+              href="mailto:hello@spremtlabs.com" 
+              className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 group cursor-pointer block"
+              onClick={() => trackContact('email')}
+            >
               <Mail className="w-8 h-8 text-blue-400 mb-4 mx-auto group-hover:scale-110 transition-transform duration-200" />
               <h3 className="text-xl font-semibold mb-3">Email</h3>
-              <a 
-                href="mailto:hello@spremtlabs.com" 
-                className="text-blue-400 hover:text-blue-300 transition-colors duration-200 flex items-center justify-center"
-                onClick={() => trackContact('email')}
-              >
+              <div className="text-blue-400 group-hover:text-blue-300 transition-colors duration-200 flex items-center justify-center">
                 hello@spremtlabs.com
                 <ExternalLink className="w-4 h-4 ml-2" />
-              </a>
-            </div>
+              </div>
+            </a>
 
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 group">
+            <a 
+              href="https://calendly.com/tracykeogh/sremptlabs" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 group cursor-pointer block"
+              onClick={() => trackContact('calendly')}
+            >
               <Calendar className="w-8 h-8 text-orange-400 mb-4 mx-auto group-hover:scale-110 transition-transform duration-200" />
               <h3 className="text-xl font-semibold mb-3">Book a Call</h3>
-              <a 
-                href="https://calendly.com/tracykeogh/sremptlabs" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-orange-400 hover:text-orange-300 transition-colors duration-200 flex items-center justify-center"
-                onClick={() => trackContact('calendly')}
-              >
+              <div className="text-orange-400 group-hover:text-orange-300 transition-colors duration-200 flex items-center justify-center">
                 30-minute consultation
                 <ExternalLink className="w-4 h-4 ml-2" />
-              </a>
-            </div>
+              </div>
+            </a>
           </div>
 
           <div className="flex justify-center space-x-6">
