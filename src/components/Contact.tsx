@@ -6,9 +6,9 @@ const Contact: React.FC = () => {
     <section className="py-20 bg-gradient-to-br from-gray-800 to-gray-900 text-white">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-light mb-6">Ready to Scale?</h2>
+          <h2 className="text-4xl md:text-5xl font-light mb-6">Can I help?</h2>
           <p className="text-2xl text-gray-300 mb-12">
-            Get a custom roadmap to €1M+ ARR in our first conversation.
+            Get actionable support from our first call.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
