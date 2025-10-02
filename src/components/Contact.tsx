@@ -26,7 +26,7 @@ const Contact: React.FC = () => {
 
             <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 hover:bg-opacity-20 transition-all duration-300 group">
               <Calendar className="w-8 h-8 text-orange-400 mb-4 mx-auto group-hover:scale-110 transition-transform duration-200" />
-              <h3 className="text-xl font-semibold mb-3">Strategic Assessment Call</h3>
+              <h3 className="text-xl font-semibold mb-3">Book a Call</h3>
               <a 
                 href="https://calendly.com/tracykeogh/sremptlabs" 
                 target="_blank"
