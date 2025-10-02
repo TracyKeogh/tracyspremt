@@ -1,5 +1,6 @@
 import React from 'react';
 import { Mail, Calendar, Linkedin, Twitter, ExternalLink } from 'lucide-react';
+import { trackContact } from '../utils/analytics';
 
 const Contact: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const Contact: React.FC = () => {
               <a 
                 href="mailto:hello@spremtlabs.com" 
                 className="text-blue-400 hover:text-blue-300 transition-colors duration-200 flex items-center justify-center"
+                onClick={() => trackContact('email')}
               >
                 hello@spremtlabs.com
                 <ExternalLink className="w-4 h-4 ml-2" />
@@ -32,6 +34,7 @@ const Contact: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-orange-400 hover:text-orange-300 transition-colors duration-200 flex items-center justify-center"
+                onClick={() => trackContact('calendly')}
               >
                 30-minute consultation
                 <ExternalLink className="w-4 h-4 ml-2" />
@@ -46,6 +49,7 @@ const Contact: React.FC = () => {
               rel="noopener noreferrer"
               className="p-3 bg-white bg-opacity-10 rounded-full hover:bg-opacity-20 transition-all duration-300 transform hover:scale-110"
               aria-label="LinkedIn"
+              onClick={() => trackContact('linkedin')}
             >
               <Linkedin className="w-6 h-6 text-blue-400" />
             </a>
@@ -55,6 +59,7 @@ const Contact: React.FC = () => {
               rel="noopener noreferrer"
               className="p-3 bg-white bg-opacity-10 rounded-full hover:bg-opacity-20 transition-all duration-300 transform hover:scale-110"
               aria-label="Twitter"
+              onClick={() => trackContact('twitter')}
             >
               <Twitter className="w-6 h-6 text-blue-400" />
             </a>

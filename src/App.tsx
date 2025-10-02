@@ -5,8 +5,11 @@ import Projects from './components/Projects';
 import Results from './components/Results';
 import About from './components/About';
 import Contact from './components/Contact';
+import { usePageTracking } from './hooks/usePageTracking';
 
 function App() {
+  // Initialize page tracking
+  usePageTracking();
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
