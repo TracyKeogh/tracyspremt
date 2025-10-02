@@ -28,7 +28,9 @@ const Contact: React.FC = () => {
               <Calendar className="w-8 h-8 text-orange-400 mb-4 mx-auto group-hover:scale-110 transition-transform duration-200" />
               <h3 className="text-xl font-semibold mb-3">Strategic Assessment Call</h3>
               <a 
-                href="mailto:hello@spremtlabs.com?subject=Strategic Assessment Call Request" 
+                href="https://calendly.com/tracykeogh/sremptlabs" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-orange-400 hover:text-orange-300 transition-colors duration-200 flex items-center justify-center"
               >
                 30-minute consultation
