@@ -3,6 +3,7 @@ import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Results from './components/Results';
+import Blog from './components/Blog';
 import About from './components/About';
 import Contact from './components/Contact';
 import { usePageTracking } from './hooks/usePageTracking';
@@ -20,6 +21,9 @@ function App() {
         <Projects />
       </div>
       <Results />
+      <div id="blog">
+        <Blog />
+      </div>
       <div id="about">
         <About />
       </div>
