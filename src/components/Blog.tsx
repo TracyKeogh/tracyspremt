@@ -195,6 +195,74 @@ const Blog: React.FC = () => {
                     </div>
                   </div>
                 </div>
+
+                <div className="bg-gradient-to-r from-teal-50 to-cyan-50 border border-teal-200 rounded-xl p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-teal-600 font-bold text-sm">5</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-800 mb-3">The Text Generation Disaster</h3>
+                      <p className="text-gray-700 mb-4 leading-relaxed">
+                        Even when tools like ChatGPT got the logo placement right, they completely butchered the description text. 
+                        I'd ask for "Turn Your Idea Into Reality" and get gibberish like:
+                      </p>
+                      <div className="bg-white border border-teal-200 rounded-lg p-4 mb-4">
+                        <div className="space-y-2 text-sm">
+                          <div className="flex items-center gap-2 text-red-700">
+                            <span className="text-red-500">❌</span>
+                            <span><strong>What I wanted:</strong> "Turn Your Idea Into Reality"</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-red-700">
+                            <span className="text-red-500">❌</span>
+                            <span><strong>What I got:</strong> "Turn or idea into reality, torn yourreality, into ateality"</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-red-700">
+                            <span className="text-red-500">❌</span>
+                            <span><strong>Or even:</strong> "LOKE YOUR sinto least" (completely incomprehensible)</span>
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-gray-700">
+                        It was like the AI was having a stroke while trying to write my marketing copy.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-rose-50 to-pink-50 border border-rose-200 rounded-xl p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-rose-600 font-bold text-sm">6</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-800 mb-3">The Canva Catastrophe</h3>
+                      <p className="text-gray-700 mb-4 leading-relaxed">
+                        Canva's AI logo insertion was perhaps the most frustrating of all. It didn't just get the text wrong - 
+                        it completely misunderstood my brand identity:
+                      </p>
+                      <div className="bg-white border border-rose-200 rounded-lg p-4 mb-4">
+                        <div className="space-y-2 text-sm">
+                          <div className="flex items-center gap-2 text-red-700">
+                            <span className="text-red-500">❌</span>
+                            <span><strong>My brand:</strong> SPREMT LABS</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-red-700">
+                            <span className="text-red-500">❌</span>
+                            <span><strong>Canva generated:</strong> "SLABist" and "SFREVIT"</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-red-700">
+                            <span className="text-red-500">❌</span>
+                            <span><strong>The result:</strong> Completely unrecognizable brand identity</span>
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-gray-700">
+                        It was like asking for a Mercedes logo and getting a drawing of a bicycle. Close, but not even in the same universe.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </section>
 
