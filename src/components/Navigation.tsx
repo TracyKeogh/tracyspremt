@@ -40,12 +40,12 @@ const Navigation: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-3">
             <img 
-              src="/BrianLogoSpremt.png" 
-              alt="Tracy Keogh Logo" 
+              src="/SpremtLabs.png" 
+              alt="Spremt Labs Logo" 
               className="w-8 h-8 object-contain"
             />
             <div className="font-semibold text-xl text-gray-800">
-              Tracy Keogh
+              Spremt Labs
             </div>
           </div>
 

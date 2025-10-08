@@ -30,20 +30,47 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-6 h-screen flex items-center justify-center">
         <div className="text-center max-w-4xl">
           <div className="mb-8">
-            <h1 className="text-5xl md:text-7xl font-light text-gray-800 mb-6 leading-tight">
-              Hi, I'm Tracy.
+            {/* Spremt Labs Logo */}
+            <div className="mb-8 flex justify-center">
+              <img 
+                src="/SpremtLabs.png" 
+                alt="Spremt Labs Logo" 
+                className="w-32 h-32 object-contain"
+              />
+            </div>
+            
+            <div className="mb-4">
+              <span className="inline-block bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">
+                HANDS-ON WORKSHOP
+              </span>
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-light text-gray-800 mb-6 leading-tight">
+              Turn Your Idea Into Reality
             </h1>
-            <div className="text-2xl md:text-3xl text-gray-600 leading-relaxed">
-              <p className="mb-2">I build</p>
-              <div className="inline-block min-w-[200px] text-left">
-                <span 
-                  key={currentWord}
-                  className="text-blue-600 font-medium animate-fade-in"
-                >
-                  {words[currentWord]}
-                </span>
+            
+            <div className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-6">
+              <p className="mb-4">Build a working prototype in under 1 hour</p>
+              <p className="text-lg">— no coding experience needed</p>
+            </div>
+
+            {/* Feature highlights */}
+            <div className="grid md:grid-cols-3 gap-6 mt-8 text-center">
+              <div className="p-4">
+                <div className="text-3xl mb-2">⚡</div>
+                <h3 className="font-semibold text-gray-800 mb-2">AI-Powered Tools</h3>
+                <p className="text-sm text-gray-600">Use Cursor, Bolt, Lovable & Claude to build fast</p>
               </div>
-              <p className="mt-2">with great people.</p>
+              <div className="p-4">
+                <div className="text-3xl mb-2">🚀</div>
+                <h3 className="font-semibold text-gray-800 mb-2">Leave With Results</h3>
+                <p className="text-sm text-gray-600">Walk away with a live, working prototype</p>
+              </div>
+              <div className="p-4">
+                <div className="text-3xl mb-2">💡</div>
+                <h3 className="font-semibold text-gray-800 mb-2">For Everyone</h3>
+                <p className="text-sm text-gray-600">Founders, professionals & creative thinkers</p>
+              </div>
             </div>
           </div>
         </div>
