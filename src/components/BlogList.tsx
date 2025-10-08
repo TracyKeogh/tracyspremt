@@ -211,7 +211,6 @@ const BlogList: React.FC = () => {
                   <span className="text-3xl">📝</span>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">More posts coming soon</h3>
-                <p className="text-gray-600">I'm crafting more insights about AI, development challenges, and breakthrough solutions.</p>
               </div>
             )}
           </div>
