@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 AI Banner Generator - Create Custom Promotional Images</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 0;
+            min-height: 80vh;
+        }
+        
+        .control-panel {
+            background: #f8f9fa;
+            padding: 30px;
+            border-right: 1px solid #e9ecef;
+            overflow-y: auto;
+        }
+        
+        .preview-panel {
+            padding: 30px;
+            background: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #495057;
+            font-size: 14px;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .color-picker-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .feature-inputs {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            background: white;
+        }
+        
+        .feature-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        
+        .feature-item input {
+            margin-bottom: 0;
+        }
+        
+        .remove-feature {
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .add-feature {
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .generate-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .download-section {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .download-section h3 {
+            margin-bottom: 15px;
+            color: #495057;
+        }
+        
+        .download-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background: #218838;
+            transform: translateY(-1px);
+        }
+        
+        .download-btn.png { background: #007bff; }
+        .download-btn.jpg { background: #fd7e14; }
+        .download-btn.svg { background: #6f42c1; }
+        
+        .banner-preview {
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: scale(0.7);
+            transform-origin: center;
+            margin: -100px 0;
+        }
+        
+        .banner {
+            width: 800px;
+            height: 450px;
+            position: relative;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        .banner-content {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            right: 40px;
+            bottom: 40px;
+            color: white;
+        }
+        
+        .banner-logo {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            font-family: 'Space Grotesk', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .banner-logo img {
+            max-height: 50px;
+            max-width: 200px;
+            object-fit: contain;
+        }
+        
+        .banner-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .banner-title {
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 20px;
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+        
+        .banner-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            line-height: 1.4;
+        }
+        
+        .banner-features {
+            display: flex;
+            gap: 20px;
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            right: 40px;
+        }
+        
+        .banner-feature {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 25px 20px;
+            border-radius: 16px;
+            flex: 1;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner-feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .banner-feature:hover::before {
+            opacity: 1;
+        }
+        
+        .banner-feature-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+            display: block;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+            position: relative;
+            z-index: 2;
+        }
+        
+        .banner-feature-title {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .banner-feature-desc {
+            font-size: 12px;
+            opacity: 0.9;
+            line-height: 1.4;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .preset-templates {
+            margin-top: 20px;
+        }
+        
+        .preset-btn {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .preset-btn:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+        
+        .preset-btn.active {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+        
+        .size-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .size-option {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .size-option:hover {
+            border-color: #667eea;
+        }
+        
+        .size-option.active {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+        
+        .size-option h4 {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .size-option p {
+            font-size: 12px;
+            color: #6c757d;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+        }
+        
+        .loading.show {
+            display: block;
+        }
+        
+        @media (max-width: 1200px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .banner-preview {
+                transform: scale(0.5);
+                margin: -150px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎨 AI Banner Generator</h1>
+            <p>Create stunning promotional banners with AI-powered customization</p>
+        </div>
+        
+        <div class="main-content">
+            <div class="control-panel">
+                <form id="bannerForm">
+                    <div class="form-group">
+                        <label for="bannerSize">Banner Size</label>
+                        <div class="size-options">
+                            <div class="size-option active" data-size="eventbrite">
+                                <h4>Eventbrite</h4>
+                                <p>1920×1080</p>
+                            </div>
+                            <div class="size-option" data-size="social">
+                                <h4>Social Media</h4>
+                                <p>1200×630</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="logoUpload">Upload Your Logo</label>
+                        <input type="file" id="logoUpload" accept="image/*" onchange="handleLogoUpload(event)">
+                        <div class="logo-preview" id="logoPreview" style="display: none;">
+                            <img id="uploadedLogo" style="max-height: 60px; margin-top: 10px; border-radius: 8px;">
+                            <button type="button" onclick="removeLogo()" style="background: #dc3545; color: white; border: none; border-radius: 4px; padding: 5px 10px; margin-left: 10px; cursor: pointer;">Remove</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="companyName">Company/Brand Name (Fallback)</label>
+                        <input type="text" id="companyName" placeholder="e.g., SPREMT LABS (used if no logo uploaded)" value="SPREMT LABS">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eventType">Event Type</label>
+                        <input type="text" id="eventType" placeholder="e.g., HANDS-ON WORKSHOP" value="HANDS-ON WORKSHOP">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mainTitle">Main Title</label>
+                        <input type="text" id="mainTitle" placeholder="e.g., Turn Your Idea Into Reality" value="Turn Your Idea Into Reality">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subtitle">Subtitle</label>
+                        <textarea id="subtitle" placeholder="Describe your event or offering...">Build a working prototype in under 1 hour — no coding experience needed</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Features/Benefits (up to 3)</label>
+                        <div class="feature-inputs">
+                            <div class="feature-item">
+                                <input type="text" placeholder="Feature title" class="feature-title" value="AI-Powered Tools">
+                                <button type="button" class="remove-feature">×</button>
+                            </div>
+                            <div class="feature-item">
+                                <input type="text" placeholder="Feature description" class="feature-desc" value="Use Cursor, Bolt, Lovable & Claude to build fast.">
+                            </div>
+                            <div class="feature-item">
+                                <input type="text" placeholder="Feature title" class="feature-title" value="Leave With Results">
+                                <button type="button" class="remove-feature">×</button>
+                            </div>
+                            <div class="feature-item">
+                                <input type="text" placeholder="Feature description" class="feature-desc" value="Walk away with a live, working prototype.">
+                            </div>
+                            <div class="feature-item">
+                                <input type="text" placeholder="Feature title" class="feature-title" value="For Everyone">
+                                <button type="button" class="remove-feature">×</button>
+                            </div>
+                            <div class="feature-item">
+                                <input type="text" placeholder="Feature description" class="feature-desc" value="Founders, professionals & creative thinkers.">
+                            </div>
+                            <button type="button" class="add-feature">+ Add Feature</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Color Scheme</label>
+                        <div class="color-picker-group">
+                            <div>
+                                <label for="primaryColor">Primary Color</label>
+                                <input type="color" id="primaryColor" value="#667eea">
+                            </div>
+                            <div>
+                                <label for="secondaryColor">Secondary Color</label>
+                                <input type="color" id="secondaryColor" value="#764ba2">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Quick Templates</label>
+                        <div class="preset-templates">
+                            <button type="button" class="preset-btn active" data-preset="workshop">🎓 Workshop</button>
+                            <button type="button" class="preset-btn" data-preset="conference">🏢 Conference</button>
+                            <button type="button" class="preset-btn" data-preset="product">🚀 Product Launch</button>
+                            <button type="button" class="preset-btn" data-preset="course">📚 Course</button>
+                            <button type="button" class="preset-btn" data-preset="event">🎉 Event</button>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="generate-btn" onclick="generateBanner()">
+                        🎨 Generate Banner
+                    </button>
+                </form>
+                
+                <div class="loading" id="loading">
+                    <p>🎨 Generating your custom banner...</p>
+                </div>
+                
+                <div class="download-section" id="downloadSection" style="display: none;">
+                    <h3>📥 Download Options</h3>
+                    <button class="download-btn png" onclick="downloadBanner('png')">📄 PNG (High Quality)</button>
+                    <button class="download-btn jpg" onclick="downloadBanner('jpg')">🖼️ JPG (Smaller Size)</button>
+                    <button class="download-btn svg" onclick="downloadBanner('svg')">🔷 SVG (Vector)</button>
+                    <button class="download-btn" onclick="downloadBanner('4k')">🔥 4K Ultra-HD</button>
+                </div>
+            </div>
+            
+            <div class="preview-panel">
+                <div class="banner-preview">
+                    <div class="banner" id="bannerPreview">
+                        <div class="banner-content">
+                            <div class="banner-logo" id="previewLogo">SPREMT LABS</div>
+                            <div class="banner-badge" id="previewBadge">HANDS-ON WORKSHOP</div>
+                            <div class="banner-title" id="previewTitle">Turn Your Idea Into Reality</div>
+                            <div class="banner-subtitle" id="previewSubtitle">Build a working prototype in under 1 hour — no coding experience needed</div>
+                            <div class="banner-features" id="previewFeatures">
+                                <div class="banner-feature">
+                                    <div class="banner-feature-icon">⚡</div>
+                                    <div class="banner-feature-title">AI-Powered Tools</div>
+                                    <div class="banner-feature-desc">Use Cursor, Bolt, Lovable & Claude to build fast.</div>
+                                </div>
+                                <div class="banner-feature">
+                                    <div class="banner-feature-icon">🚀</div>
+                                    <div class="banner-feature-title">Leave With Results</div>
+                                    <div class="banner-feature-desc">Walk away with a live, working prototype.</div>
+                                </div>
+                                <div class="banner-feature">
+                                    <div class="banner-feature-icon">💡</div>
+                                    <div class="banner-feature-title">For Everyone</div>
+                                    <div class="banner-feature-desc">Founders, professionals & creative thinkers.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentBannerSize = 'eventbrite';
+        let currentPreset = 'workshop';
+        let uploadedLogoData = null;
+        
+        // Size selection
+        document.querySelectorAll('.size-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.size-option').forEach(o => o.classList.remove('active'));
+                this.classList.add('active');
+                currentBannerSize = this.dataset.size;
+                updateBannerSize();
+            });
+        });
+        
+        // Preset selection
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentPreset = this.dataset.preset;
+                applyPreset();
+            });
+        });
+        
+        // Feature management
+        document.querySelectorAll('.remove-feature').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const featureItem = this.closest('.feature-item');
+                const nextItem = featureItem.nextElementSibling;
+                featureItem.remove();
+                if (nextItem) nextItem.remove();
+            });
+        });
+        
+        document.querySelector('.add-feature').addEventListener('click', function() {
+            const container = this.parentElement;
+            const newFeature = document.createElement('div');
+            newFeature.className = 'feature-item';
+            newFeature.innerHTML = `
+                <input type="text" placeholder="Feature title" class="feature-title">
+                <button type="button" class="remove-feature">×</button>
+            `;
+            container.insertBefore(newFeature, this);
+            
+            const newDesc = document.createElement('div');
+            newDesc.className = 'feature-item';
+            newDesc.innerHTML = `
+                <input type="text" placeholder="Feature description" class="feature-desc">
+            `;
+            container.insertBefore(newDesc, this);
+            
+            newFeature.querySelector('.remove-feature').addEventListener('click', function() {
+                newFeature.remove();
+                newDesc.remove();
+            });
+        });
+        
+        // Color updates
+        document.getElementById('primaryColor').addEventListener('change', updateColors);
+        document.getElementById('secondaryColor').addEventListener('change', updateColors);
+        
+        function updateBannerSize() {
+            const banner = document.getElementById('bannerPreview');
+            if (currentBannerSize === 'eventbrite') {
+                banner.style.width = '800px';
+                banner.style.height = '450px';
+            } else {
+                banner.style.width = '600px';
+                banner.style.height = '315px';
+            }
+        }
+        
+        function applyPreset() {
+            const presets = {
+                workshop: {
+                    eventType: 'HANDS-ON WORKSHOP',
+                    mainTitle: 'Turn Your Idea Into Reality',
+                    subtitle: 'Build a working prototype in under 1 hour — no coding experience needed',
+                    features: [
+                        { title: 'AI-Powered Tools', desc: 'Use Cursor, Bolt, Lovable & Claude to build fast.', icon: '⚡' },
+                        { title: 'Leave With Results', desc: 'Walk away with a live, working prototype.', icon: '🚀' },
+                        { title: 'For Everyone', desc: 'Founders, professionals & creative thinkers.', icon: '💡' }
+                    ]
+                },
+                conference: {
+                    eventType: 'TECH CONFERENCE',
+                    mainTitle: 'Innovation Meets Reality',
+                    subtitle: 'Join industry leaders for insights, networking, and cutting-edge technology discussions',
+                    features: [
+                        { title: 'Expert Speakers', desc: 'Learn from industry leaders and innovators.', icon: '🎤' },
+                        { title: 'Networking', desc: 'Connect with like-minded professionals.', icon: '🤝' },
+                        { title: 'Latest Tech', desc: 'Discover emerging technologies and trends.', icon: '🔮' }
+                    ]
+                },
+                product: {
+                    eventType: 'PRODUCT LAUNCH',
+                    mainTitle: 'The Future is Here',
+                    subtitle: 'Experience our revolutionary new product that will change everything',
+                    features: [
+                        { title: 'Revolutionary Design', desc: 'Cutting-edge technology meets beautiful design.', icon: '✨' },
+                        { title: 'Easy to Use', desc: 'Intuitive interface that anyone can master.', icon: '🎯' },
+                        { title: 'Available Now', desc: 'Get yours today with special launch pricing.', icon: '🛒' }
+                    ]
+                },
+                course: {
+                    eventType: 'ONLINE COURSE',
+                    mainTitle: 'Master New Skills',
+                    subtitle: 'Learn from industry experts with hands-on projects and real-world applications',
+                    features: [
+                        { title: 'Expert Instruction', desc: 'Learn from seasoned professionals.', icon: '👨‍🏫' },
+                        { title: 'Hands-On Projects', desc: 'Build real projects as you learn.', icon: '🛠️' },
+                        { title: 'Flexible Learning', desc: 'Study at your own pace, anytime.', icon: '⏰' }
+                    ]
+                },
+                event: {
+                    eventType: 'SPECIAL EVENT',
+                    mainTitle: 'Don\'t Miss Out',
+                    subtitle: 'Join us for an unforgettable experience with food, drinks, and entertainment',
+                    features: [
+                        { title: 'Great Food', desc: 'Delicious catering from top local restaurants.', icon: '🍽️' },
+                        { title: 'Live Entertainment', desc: 'Music and performances throughout the evening.', icon: '🎵' },
+                        { title: 'Networking', desc: 'Meet new people and expand your network.', icon: '👥' }
+                    ]
+                }
+            };
+            
+            const preset = presets[currentPreset];
+            document.getElementById('eventType').value = preset.eventType;
+            document.getElementById('mainTitle').value = preset.mainTitle;
+            document.getElementById('subtitle').value = preset.subtitle;
+            
+            // Update features
+            const featureInputs = document.querySelector('.feature-inputs');
+            featureInputs.innerHTML = '';
+            preset.features.forEach(feature => {
+                const titleItem = document.createElement('div');
+                titleItem.className = 'feature-item';
+                titleItem.innerHTML = `
+                    <input type="text" placeholder="Feature title" class="feature-title" value="${feature.title}">
+                    <button type="button" class="remove-feature">×</button>
+                `;
+                featureInputs.appendChild(titleItem);
+                
+                const descItem = document.createElement('div');
+                descItem.className = 'feature-item';
+                descItem.innerHTML = `
+                    <input type="text" placeholder="Feature description" class="feature-desc" value="${feature.desc}">
+                `;
+                featureInputs.appendChild(descItem);
+                
+                titleItem.querySelector('.remove-feature').addEventListener('click', function() {
+                    titleItem.remove();
+                    descItem.remove();
+                });
+            });
+            
+            const addBtn = document.createElement('button');
+            addBtn.type = 'button';
+            addBtn.className = 'add-feature';
+            addBtn.textContent = '+ Add Feature';
+            addBtn.addEventListener('click', function() {
+                const newFeature = document.createElement('div');
+                newFeature.className = 'feature-item';
+                newFeature.innerHTML = `
+                    <input type="text" placeholder="Feature title" class="feature-title">
+                    <button type="button" class="remove-feature">×</button>
+                `;
+                featureInputs.insertBefore(newFeature, this);
+                
+                const newDesc = document.createElement('div');
+                newDesc.className = 'feature-item';
+                newDesc.innerHTML = `
+                    <input type="text" placeholder="Feature description" class="feature-desc">
+                `;
+                featureInputs.insertBefore(newDesc, this);
+                
+                newFeature.querySelector('.remove-feature').addEventListener('click', function() {
+                    newFeature.remove();
+                    newDesc.remove();
+                });
+            });
+            featureInputs.appendChild(addBtn);
+            
+            updatePreview();
+        }
+        
+        function updateColors() {
+            const primary = document.getElementById('primaryColor').value;
+            const secondary = document.getElementById('secondaryColor').value;
+            const badge = document.getElementById('previewBadge');
+            badge.style.background = `linear-gradient(135deg, ${primary} 0%, ${secondary} 100%)`;
+        }
+        
+        function updatePreview() {
+            const logoContainer = document.getElementById('previewLogo');
+            if (uploadedLogoData) {
+                logoContainer.innerHTML = `<img src="${uploadedLogoData}" style="max-height: 50px; max-width: 200px; object-fit: contain;">`;
+            } else {
+                logoContainer.innerHTML = document.getElementById('companyName').value || 'Your Company';
+            }
+            
+            document.getElementById('previewBadge').textContent = document.getElementById('eventType').value || 'EVENT TYPE';
+            document.getElementById('previewTitle').textContent = document.getElementById('mainTitle').value || 'Your Title';
+            document.getElementById('previewSubtitle').textContent = document.getElementById('subtitle').value || 'Your subtitle here...';
+            
+            // Update features
+            const featuresContainer = document.getElementById('previewFeatures');
+            const featureTitles = document.querySelectorAll('.feature-title');
+            const featureDescs = document.querySelectorAll('.feature-desc');
+            
+            featuresContainer.innerHTML = '';
+            
+            for (let i = 0; i < featureTitles.length; i++) {
+                if (featureTitles[i].value.trim()) {
+                    const feature = document.createElement('div');
+                    feature.className = 'banner-feature';
+                    
+                    const icons = ['⚡', '🚀', '💡', '🎯', '✨', '🔥', '🎉', '🌟'];
+                    const icon = icons[i % icons.length];
+                    
+                    feature.innerHTML = `
+                        <div class="banner-feature-icon">${icon}</div>
+                        <div class="banner-feature-title">${featureTitles[i].value}</div>
+                        <div class="banner-feature-desc">${featureDescs[i] ? featureDescs[i].value : ''}</div>
+                    `;
+                    featuresContainer.appendChild(feature);
+                }
+            }
+            
+            updateColors();
+        }
+        
+        function generateBanner() {
+            document.getElementById('loading').classList.add('show');
+            
+            setTimeout(() => {
+                updatePreview();
+                document.getElementById('loading').classList.remove('show');
+                document.getElementById('downloadSection').style.display = 'block';
+            }, 1000);
+        }
+        
+        function handleLogoUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedLogoData = e.target.result;
+                    document.getElementById('uploadedLogo').src = uploadedLogoData;
+                    document.getElementById('logoPreview').style.display = 'block';
+                    updatePreview();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+        
+        function removeLogo() {
+            uploadedLogoData = null;
+            document.getElementById('logoUpload').value = '';
+            document.getElementById('logoPreview').style.display = 'none';
+            updatePreview();
+        }
+        
+        function downloadBanner(format) {
+            const banner = document.getElementById('bannerPreview');
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            if (currentBannerSize === 'eventbrite') {
+                canvas.width = 1920;
+                canvas.height = 1080;
+            } else {
+                canvas.width = 1200;
+                canvas.height = 630;
+            }
+            
+            const scale = canvas.width / 800;
+            
+            // Draw enhanced black background with subtle gradient
+            const bgGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            bgGradient.addColorStop(0, '#000000');
+            bgGradient.addColorStop(0.5, '#1a1a1a');
+            bgGradient.addColorStop(1, '#000000');
+            ctx.fillStyle = bgGradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw logo (image or text)
+            if (uploadedLogoData) {
+                const logoImg = new Image();
+                logoImg.onload = function() {
+                    ctx.drawImage(logoImg, 80 * scale, 60 * scale, 400 * scale, 120 * scale);
+                    drawRemainingElements();
+                };
+                logoImg.src = uploadedLogoData;
+            } else {
+                ctx.fillStyle = '#ffffff';
+                ctx.font = `${Math.round(56 * scale)}px Space Grotesk, sans-serif`;
+                ctx.fillText(document.getElementById('companyName').value || 'Your Company', 80 * scale, 120 * scale);
+                drawRemainingElements();
+            }
+            
+            function drawRemainingElements() {
+                // Draw badge
+            const primary = document.getElementById('primaryColor').value;
+            const secondary = document.getElementById('secondaryColor').value;
+            const badgeGradient = ctx.createLinearGradient(80 * scale, 160 * scale, 500 * scale, 160 * scale);
+            badgeGradient.addColorStop(0, primary);
+            badgeGradient.addColorStop(1, secondary);
+            ctx.fillStyle = badgeGradient;
+            
+            const badgeX = 80 * scale;
+            const badgeY = 160 * scale;
+            const badgeW = 420 * scale;
+            const badgeH = 50 * scale;
+            const radius = 25 * scale;
+            
+            ctx.beginPath();
+            ctx.moveTo(badgeX + radius, badgeY);
+            ctx.lineTo(badgeX + badgeW - radius, badgeY);
+            ctx.quadraticCurveTo(badgeX + badgeW, badgeY, badgeX + badgeW, badgeY + radius);
+            ctx.lineTo(badgeX + badgeW, badgeY + badgeH - radius);
+            ctx.quadraticCurveTo(badgeX + badgeW, badgeY + badgeH, badgeX + badgeW - radius, badgeY + badgeH);
+            ctx.lineTo(badgeX + radius, badgeY + badgeH);
+            ctx.quadraticCurveTo(badgeX, badgeY + badgeH, badgeX, badgeY + badgeH - radius);
+            ctx.lineTo(badgeX, badgeY + radius);
+            ctx.quadraticCurveTo(badgeX, badgeY, badgeX + radius, badgeY);
+            ctx.closePath();
+            ctx.fill();
+            
+            ctx.fillStyle = '#ffffff';
+            ctx.font = `700 ${Math.round(20 * scale)}px Space Grotesk, sans-serif`;
+            ctx.fillText(document.getElementById('eventType').value || 'EVENT TYPE', 100 * scale, 185 * scale);
+            
+            // Draw title
+            ctx.fillStyle = '#ffffff';
+            ctx.font = `900 ${Math.round(96 * scale)}px Space Grotesk, sans-serif`;
+            ctx.fillText(document.getElementById('mainTitle').value || 'Your Title', 80 * scale, 350 * scale);
+            
+            // Draw subtitle
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.font = `400 ${Math.round(36 * scale)}px Inter, sans-serif`;
+            const subtitle = document.getElementById('subtitle').value || 'Your subtitle here...';
+            ctx.fillText(subtitle, 80 * scale, 420 * scale);
+            
+            // Draw features
+            const featuresContainer = document.getElementById('previewFeatures');
+            const features = featuresContainer.children;
+            const featureY = 500 * scale;
+            const featureHeight = 200 * scale;
+            const featureWidth = (canvas.width - 240 * scale) / Math.min(features.length, 3);
+            
+            for (let i = 0; i < Math.min(features.length, 3); i++) {
+                const feature = features[i];
+                const featureX = 80 * scale + (i * (featureWidth + 20 * scale));
+                
+                // Draw feature card
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+                ctx.beginPath();
+                ctx.moveTo(featureX + 20 * scale, featureY);
+                ctx.lineTo(featureX + featureWidth - 20 * scale, featureY);
+                ctx.quadraticCurveTo(featureX + featureWidth, featureY, featureX + featureWidth, featureY + 20 * scale);
+                ctx.lineTo(featureX + featureWidth, featureY + featureHeight - 20 * scale);
+                ctx.quadraticCurveTo(featureX + featureWidth, featureY + featureHeight, featureX + featureWidth - 20 * scale, featureY + featureHeight);
+                ctx.lineTo(featureX + 20 * scale, featureY + featureHeight);
+                ctx.quadraticCurveTo(featureX, featureY + featureHeight, featureX, featureY + featureHeight - 20 * scale);
+                ctx.lineTo(featureX, featureY + 20 * scale);
+                ctx.quadraticCurveTo(featureX, featureY, featureX + 20 * scale, featureY);
+                ctx.closePath();
+                ctx.fill();
+                
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+                ctx.lineWidth = 2 * scale;
+                ctx.stroke();
+                
+                // Draw feature content
+                const icon = feature.querySelector('.banner-feature-icon').textContent;
+                const title = feature.querySelector('.banner-feature-title').textContent;
+                const desc = feature.querySelector('.banner-feature-desc').textContent;
+                
+                ctx.fillStyle = '#FFD700';
+                ctx.font = `700 ${Math.round(48 * scale)}px Space Grotesk, sans-serif`;
+                ctx.fillText(icon, featureX + 30 * scale, featureY + 60 * scale);
+                
+                ctx.fillStyle = '#ffffff';
+                ctx.font = `700 ${Math.round(28 * scale)}px Space Grotesk, sans-serif`;
+                ctx.fillText(title, featureX + 30 * scale, featureY + 100 * scale);
+                
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                ctx.font = `400 ${Math.round(20 * scale)}px Inter, sans-serif`;
+                ctx.fillText(desc, featureX + 30 * scale, featureY + 140 * scale);
+            }
+            
+            // Download
+            const link = document.createElement('a');
+            let filename = 'custom-banner';
+            let mimeType = 'image/png';
+            
+            if (format === 'jpg') {
+                mimeType = 'image/jpeg';
+                filename += '.jpg';
+            } else if (format === 'svg') {
+                // For SVG, we'd need a different approach - for now, just use PNG
+                mimeType = 'image/png';
+                filename += '.png';
+            } else if (format === '4k') {
+                // Scale up for 4K
+                const scale4k = 2;
+                const canvas4k = document.createElement('canvas');
+                const ctx4k = canvas4k.getContext('2d');
+                canvas4k.width = canvas.width * scale4k;
+                canvas4k.height = canvas.height * scale4k;
+                ctx4k.imageSmoothingEnabled = true;
+                ctx4k.imageSmoothingQuality = 'high';
+                ctx4k.drawImage(canvas, 0, 0, canvas4k.width, canvas4k.height);
+                filename = 'custom-banner-4k.png';
+                link.href = canvas4k.toDataURL(mimeType);
+            } else {
+                filename += '.png';
+                link.href = canvas.toDataURL(mimeType);
+            }
+            
+            if (format !== '4k') {
+                link.href = canvas.toDataURL(mimeType);
+            }
+            
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            }
+        }
+        
+        // Initialize
+        updatePreview();
+        
+        // Add event listeners for real-time updates
+        document.getElementById('companyName').addEventListener('input', updatePreview);
+        document.getElementById('eventType').addEventListener('input', updatePreview);
+        document.getElementById('mainTitle').addEventListener('input', updatePreview);
+        document.getElementById('subtitle').addEventListener('input', updatePreview);
+        
+        document.addEventListener('input', function(e) {
+            if (e.target.classList.contains('feature-title') || e.target.classList.contains('feature-desc')) {
+                updatePreview();
+            }
+        });
+    </script>
+</body>
+</html>
