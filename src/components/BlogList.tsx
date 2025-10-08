@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, Clock, ArrowRight, Home } from 'lucide-react';
+import { Calendar, Clock, ArrowRight } from 'lucide-react';
 
 interface BlogPost {
   id: string;
@@ -45,14 +45,6 @@ const BlogList: React.FC = () => {
               <div className="font-semibold text-xl text-gray-800 group-hover:text-blue-600 transition-colors">
                 Tracy Keogh
               </div>
-            </Link>
-            
-            <Link 
-              to="/" 
-              className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 font-medium transition-colors group"
-            >
-              <Home className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              Back to Home
             </Link>
           </div>
         </div>
