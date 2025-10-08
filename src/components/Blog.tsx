@@ -4,27 +4,25 @@ import { Calendar, Clock, ArrowLeft, ArrowRight, Home } from 'lucide-react';
 
 const Blog: React.FC = () => {
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-xl border-b border-gray-800/50">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-95 backdrop-blur-sm shadow-sm border-b border-gray-200">
         <div className="container mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
-            <Link to="/" className="flex items-center gap-4 group">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
-                <img 
-                  src="/BrianLogoSpremt.png" 
-                  alt="SPREMT LABS" 
-                  className="w-6 h-6 object-contain filter brightness-0 invert"
-                />
-              </div>
-              <div className="font-bold text-2xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent group-hover:from-blue-300 group-hover:to-purple-300 transition-all duration-300">
-                SPREMT LABS
+          <div className="flex items-center justify-between h-16">
+            <Link to="/" className="flex items-center gap-3 group">
+              <img 
+                src="/BrianLogoSpremt.png" 
+                alt="Tracy Keogh Logo" 
+                className="w-8 h-8 object-contain group-hover:scale-105 transition-transform"
+              />
+              <div className="font-semibold text-xl text-gray-800 group-hover:text-blue-600 transition-colors">
+                Tracy Keogh
               </div>
             </Link>
             
             <Link 
               to="/" 
-              className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-full text-blue-300 hover:from-blue-600/40 hover:to-purple-600/40 hover:text-blue-200 font-medium transition-all duration-300 group backdrop-blur-sm"
+              className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 font-medium transition-colors group"
             >
               <Home className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               Back to Home
@@ -33,47 +31,47 @@ const Blog: React.FC = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 relative">
-        {/* Animated Background */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-900/20 via-purple-900/10 to-indigo-900/20"></div>
-          <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute top-40 right-32 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute bottom-20 left-1/3 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+      {/* Header */}
+      <section className="pt-24 pb-16 relative overflow-hidden">
+        {/* Background Network Animation */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+          <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-orange-500 rounded-full animate-pulse delay-1000"></div>
+          <div className="absolute bottom-1/3 left-1/2 w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse delay-500"></div>
+          <div className="absolute top-1/2 right-1/4 w-1 h-1 bg-orange-500 rounded-full animate-pulse delay-1500"></div>
         </div>
 
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-5xl mx-auto">
+        <div className="container mx-auto px-6 relative">
+          <div className="max-w-4xl mx-auto">
             <Link 
               to="/blog" 
-              className="inline-flex items-center gap-3 text-gray-400 hover:text-blue-400 font-medium mb-12 transition-colors group"
+              className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 font-medium mb-8 transition-colors group"
             >
-              <ArrowLeft className="w-5 h-5 group-hover:-translate-x-2 transition-transform" />
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               Back to Blog
             </Link>
             
             <div className="text-center">
-              <span className="inline-block bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 px-6 py-3 rounded-full text-blue-300 font-semibold mb-8 backdrop-blur-sm">
+              <span className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
                 AI & Development
               </span>
               
-              <h1 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent mb-8 leading-tight tracking-tight">
+              <h1 className="text-4xl md:text-5xl font-light text-gray-800 mb-6 leading-tight">
                 The Problem That Led Me to Build an AI Banner Generator
               </h1>
               
-              <p className="text-2xl text-gray-300 mb-12 leading-relaxed max-w-4xl mx-auto font-light">
+              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 How I went from struggling with AI image generation to building a professional banner creation tool
               </p>
               
-              <div className="flex items-center justify-center gap-8 text-gray-400">
-                <span className="inline-flex items-center gap-3">
-                  <Calendar className="w-5 h-5" />
-                  <span className="text-lg">October 8, 2024</span>
+              <div className="flex items-center justify-center gap-6 text-gray-600">
+                <span className="inline-flex items-center gap-2">
+                  <Calendar className="w-4 h-4" />
+                  October 8, 2024
                 </span>
-                <span className="inline-flex items-center gap-3">
-                  <Clock className="w-5 h-5" />
-                  <span className="text-lg">5 min read</span>
+                <span className="inline-flex items-center gap-2">
+                  <Clock className="w-4 h-4" />
+                  5 min read
                 </span>
               </div>
             </div>
@@ -82,21 +80,16 @@ const Blog: React.FC = () => {
       </section>
 
       {/* Blog Content */}
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <article className="relative group">
-          {/* Glowing Background Effect */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 rounded-3xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-500"></div>
-          
-          <div className="relative bg-black rounded-3xl border border-gray-800 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-purple-900/5 to-indigo-900/10"></div>
-            <div className="relative p-12 md:p-16">
+      <div className="max-w-4xl mx-auto px-6 py-12">
+        <article className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div className="p-8 md:p-12">
 
             {/* Backstory */}
-            <section className="mb-16">
-              <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-8">The Backstory: When AI Doesn't Understand Your Vision</h2>
-              <div className="space-y-6 text-gray-300 leading-relaxed text-lg">
+            <section className="mb-12">
+              <h2 className="text-3xl font-light text-gray-800 mb-6">The Backstory: When AI Doesn't Understand Your Vision</h2>
+              <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  It all started with a simple request: <em className="text-blue-400 font-semibold">"I want to add my logo to this promotional banner."</em>
+                  It all started with a simple request: <em className="text-blue-600">"I want to add my logo to this promotional banner."</em>
                 </p>
                 <p>
                   Sounds easy, right? Not when you're working with AI image generation tools like Claude, DALL-E, or Midjourney. 
@@ -138,7 +131,7 @@ const Blog: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200 rounded-xl p-6">
+                <div className="bg-gradient-to-r from-orange-50 to-yellow-50 border border-orange-200 rounded-xl p-6">
                   <div className="flex items-start gap-4">
                     <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <span className="text-orange-600 font-bold text-sm">2</span>
@@ -146,22 +139,21 @@ const Blog: React.FC = () => {
                     <div>
                       <h3 className="text-xl font-semibold text-gray-800 mb-3">The Base64 Nightmare</h3>
                       <p className="text-gray-700 mb-4 leading-relaxed">
-                        When I tried to provide my logo as base64 code, I hit another wall:
+                        When I tried to provide my logo as base64 code, the AI complained it was "too long." 
+                        This is a common issue with AI tools - they have token limits that make it impossible to work with high-quality images.
                       </p>
-                      <ul className="text-gray-700 space-y-2">
-                        <li className="flex items-start gap-2">
-                          <span className="text-orange-500 mt-1">•</span>
-                          <span><strong>File size limitations:</strong> Base64 strings for high-quality logos are enormous</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-orange-500 mt-1">•</span>
-                          <span><strong>Processing complexity:</strong> Most AI tools can't handle large base64 inputs</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-orange-500 mt-1">•</span>
-                          <span><strong>Quality degradation:</strong> The conversion process often reduces image quality</span>
-                        </li>
-                      </ul>
+                      <div className="bg-white border border-orange-200 rounded-lg p-4">
+                        <div className="space-y-2 text-sm">
+                          <div className="flex items-center gap-2 text-orange-700">
+                            <span className="text-orange-500">❌</span>
+                            <span><strong>Problem:</strong> Base64 strings for images are massive (thousands of characters)</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-orange-700">
+                            <span className="text-orange-500">❌</span>
+                            <span><strong>Result:</strong> AI tools reject or truncate the image data</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -172,26 +164,23 @@ const Blog: React.FC = () => {
                       <span className="text-yellow-600 font-bold text-sm">3</span>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-800 mb-3">The "Can't Edit Existing Images" Roadblock</h3>
+                      <h3 className="text-xl font-semibold text-gray-800 mb-3">Can't Edit Existing Images</h3>
                       <p className="text-gray-700 mb-4 leading-relaxed">
-                        AI image generation tools are fundamentally <em>generative</em>, not <em>editorial</em>. They can create new images 
-                        but can't modify existing ones with precision. When I tried to get Claude to:
+                        AI image generation tools like DALL-E and Midjourney are designed to create images from scratch, not edit existing ones. 
+                        They can't take an existing banner and add your logo to it - they'll just create a completely new image.
                       </p>
-                      <ul className="text-gray-700 space-y-2 mb-4">
-                        <li className="flex items-start gap-2">
-                          <span className="text-yellow-500 mt-1">•</span>
-                          <span>Insert my exact logo</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-yellow-500 mt-1">•</span>
-                          <span>Maintain specific positioning</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-yellow-500 mt-1">•</span>
-                          <span>Keep exact colors and styling</span>
-                        </li>
-                      </ul>
-                      <p className="text-gray-700">The results were consistently disappointing.</p>
+                      <div className="bg-white border border-yellow-200 rounded-lg p-4">
+                        <div className="space-y-2 text-sm">
+                          <div className="flex items-center gap-2 text-yellow-700">
+                            <span className="text-yellow-500">❌</span>
+                            <span><strong>Reality:</strong> AI tools generate new images, they don't edit existing ones</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-yellow-700">
+                            <span className="text-yellow-500">❌</span>
+                            <span><strong>Workaround:</strong> None that actually work reliably</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -301,250 +290,85 @@ const Blog: React.FC = () => {
 
           {/* Breaking Point */}
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">The Breaking Point: Why I Decided to Build My Own Solution</h2>
+            <h2 className="text-3xl font-light text-gray-800 mb-4">The Breaking Point: Why I Decided to Build My Own Solution</h2>
             <p className="text-gray-700 mb-4">
-              After hours of back-and-forth with AI tools, I realized something important: 
-              <strong> the problem wasn't with the AI - it was with the approach</strong>.
+              After hours of frustration with AI tools that promised to help but delivered nothing but disappointment, 
+              I reached my breaking point. I realized that if I wanted a professional banner with my exact logo and correct text, 
+              I needed to build the solution myself.
             </p>
-            
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-green-800 mb-3">✅ AI is great for:</h3>
-                <ul className="text-green-700 list-disc pl-5">
-                  <li>Creating new designs from scratch</li>
-                  <li>Brainstorming concepts</li>
-                  <li>Generating variations</li>
-                </ul>
-              </div>
-              
-              <div className="bg-red-50 border border-red-200 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-red-800 mb-3">❌ AI is terrible for:</h3>
-                <ul className="text-red-700 list-disc pl-5">
-                  <li>Precise logo placement</li>
-                  <li>Maintaining brand consistency</li>
-                  <li>Working with exact specifications</li>
-                  <li>Professional-grade outputs</li>
-                </ul>
-              </div>
-            </div>
+            <p className="text-gray-700 mb-4">
+              This wasn't just about creating one banner - it was about solving a fundamental problem that affects anyone 
+              who needs to create professional marketing materials with their own branding.
+            </p>
           </section>
 
           {/* The Solution */}
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">The Solution: Building an AI Banner Generator</h2>
+            <h2 className="text-3xl font-light text-gray-800 mb-4">The Solution: A Banner Generator That Actually Works</h2>
             <p className="text-gray-700 mb-4">
-              Instead of fighting with AI limitations, I decided to build a tool that combines the best of both worlds:
+              So I built it. A complete banner generation tool that:
             </p>
-            
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-              <h3 className="text-lg font-semibold text-blue-800 mb-3">🎯 What I Built</h3>
-              <p className="text-blue-700 mb-3">
-                A professional banner generator that gives users:
-              </p>
-              <ul className="text-blue-700 list-disc pl-5">
-                <li><strong>Logo Upload:</strong> Upload your exact logo, not an AI interpretation</li>
-                <li><strong>Real-time Preview:</strong> See exactly what you'll get before downloading</li>
-                <li><strong>Professional Quality:</strong> High-resolution outputs in multiple formats</li>
-                <li><strong>Brand Consistency:</strong> Your colors, fonts, and styling maintained perfectly</li>
-                <li><strong>Multiple Templates:</strong> Pre-designed layouts for different use cases</li>
-              </ul>
-            </div>
-
-            <h3 className="text-xl font-bold text-gray-900 mb-4">🚀 Key Features That Solve the Original Problems</h3>
-            
-            <div className="space-y-4">
-              <div className="bg-gray-50 border-l-4 border-green-400 p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">1. Exact Logo Integration</h4>
-                <ul className="text-gray-700 text-sm">
-                  <li>• Upload your actual logo file</li>
-                  <li>• No interpretation or "AI creativity"</li>
-                  <li>• Maintains exact colors and quality</li>
-                </ul>
-              </div>
-              
-              <div className="bg-gray-50 border-l-4 border-blue-400 p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">2. Precise Control</h4>
-                <ul className="text-gray-700 text-sm">
-                  <li>• Real-time preview</li>
-                  <li>• Exact positioning</li>
-                  <li>• Custom color schemes</li>
-                  <li>• Typography control</li>
-                </ul>
-              </div>
-              
-              <div className="bg-gray-50 border-l-4 border-purple-400 p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">3. Professional Output</h4>
-                <ul className="text-gray-700 text-sm">
-                  <li>• Multiple download formats (PNG, JPG, SVG, 4K)</li>
-                  <li>• High-resolution rendering</li>
-                  <li>• Print-ready quality</li>
-                  <li>• Consistent results</li>
-                </ul>
-              </div>
-              
-              <div className="bg-gray-50 border-l-4 border-orange-400 p-4">
-                <h4 className="font-semibold text-gray-900 mb-2">4. User-Friendly Interface</h4>
-                <ul className="text-gray-700 text-sm">
-                  <li>• No coding required</li>
-                  <li>• Intuitive controls</li>
-                  <li>• Instant feedback</li>
-                  <li>• Professional templates</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          {/* Lessons Learned */}
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">The Lessons Learned</h2>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">1. AI Tools Have Limitations</h3>
-                <p className="text-gray-700 text-sm">
-                  Understanding what AI is good at (and what it's not) is crucial for effective use.
-                </p>
-              </div>
-              
-              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">2. Sometimes the Best Solution is Custom</h3>
-                <p className="text-gray-700 text-sm">
-                  Instead of forcing AI to do something it's not designed for, build a tool that does exactly what you need.
-                </p>
-              </div>
-              
-              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">3. User Experience Matters</h3>
-                <p className="text-gray-700 text-sm">
-                  The frustration I experienced led me to prioritize instant feedback, exact control, and professional results.
-                </p>
-              </div>
-              
-              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">4. Problem-Solving Through Building</h3>
-                <p className="text-gray-700 text-sm">
-                  Sometimes the best way to solve a problem is to build a solution yourself.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* The Result */}
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">The Result: A Tool That Actually Works</h2>
-            <p className="text-gray-700 mb-4">
-              The AI Banner Generator is now live and provides:
+            <ul className="text-gray-700 space-y-2 mb-4">
+              <li className="flex items-start gap-2">
+                <span className="text-blue-600 mt-1">✓</span>
+                <span>Uses your exact logo (no interpretations, no approximations)</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-blue-600 mt-1">✓</span>
+                <span>Lets you customize every element (text, colors, layout)</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-blue-600 mt-1">✓</span>
+                <span>Generates high-quality, downloadable images</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-blue-600 mt-1">✓</span>
+                <span>Works consistently every time</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-blue-600 mt-1">✓</span>
+                <span>Doesn't require any design skills or expensive software</span>
+              </li>
+            </ul>
+            <p className="text-gray-700">
+              The result? A tool that solves the exact problem AI image generation couldn't handle.
             </p>
-            
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
-              <ul className="text-green-700 space-y-2">
-                <li>✅ <strong>Exact logo placement</strong> (no AI interpretation)</li>
-                <li>✅ <strong>Professional quality</strong> (print-ready outputs)</li>
-                <li>✅ <strong>Real-time preview</strong> (see exactly what you'll get)</li>
-                <li>✅ <strong>Multiple formats</strong> (PNG, JPG, SVG, 4K)</li>
-                <li>✅ <strong>Easy to use</strong> (no technical knowledge required)</li>
-                <li>✅ <strong>Brand consistent</strong> (your colors, fonts, styling)</li>
-              </ul>
-            </div>
-          </section>
-
-          {/* When to Use AI vs Custom */}
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">The Bigger Picture: When to Use AI vs. Custom Tools</h2>
-            <p className="text-gray-700 mb-4">
-              This experience taught me an important lesson about AI tool selection:
-            </p>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-blue-800 mb-3">Use AI Image Generation When:</h3>
-                <ul className="text-blue-700 list-disc pl-5 text-sm">
-                  <li>Brainstorming new concepts</li>
-                  <li>Creating artistic variations</li>
-                  <li>Generating inspiration</li>
-                  <li>Exploring creative directions</li>
-                </ul>
-              </div>
-              
-              <div className="bg-purple-50 border border-purple-200 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-purple-800 mb-3">Build Custom Tools When:</h3>
-                <ul className="text-purple-700 list-disc pl-5 text-sm">
-                  <li>You need exact specifications</li>
-                  <li>Brand consistency is critical</li>
-                  <li>Professional quality is required</li>
-                  <li>User control is important</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          {/* Conclusion */}
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Conclusion: From Frustration to Innovation</h2>
-            <p className="text-gray-700 mb-4">
-              What started as a frustrating experience with AI limitations became an opportunity to build something better. 
-              The AI Banner Generator isn't just a solution to my original problem - it's a professional tool that others can use 
-              to create high-quality promotional materials without the headaches I experienced.
-            </p>
-            <p className="text-gray-700 mb-6">
-              Sometimes the best innovations come from solving your own problems. And sometimes, the best solution isn't to work 
-              around AI limitations - it's to build a tool that does exactly what you need.
-            </p>
-            
-            <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg p-6 text-center">
-              <h3 className="text-xl font-bold mb-2">Ready to Try It?</h3>
-              <p className="mb-4">Create your own professional banners without the AI frustration</p>
-              <a 
-                href="/imagemaker" 
-                className="inline-block bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-              >
-                Try the Banner Generator →
-              </a>
-            </div>
           </section>
 
             {/* Call to Action */}
-            <section className="border-t border-gray-800 pt-8 mt-12">
-              <div className="bg-gradient-to-r from-blue-900/20 to-indigo-900/20 rounded-xl p-8 border border-blue-500/30">
-                <h3 className="text-2xl font-bold text-white mb-4">Have you experienced similar frustrations with AI tools?</h3>
-                <p className="text-gray-300 mb-4 text-lg">
+            <section className="border-t border-gray-200 pt-8 mt-12">
+              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">Have you experienced similar frustrations with AI tools?</h3>
+                <p className="text-gray-700 mb-4">
                   What solutions have you built to solve your own problems? I'd love to hear your stories and learn from your experiences.
                 </p>
-                <p className="text-gray-400">
+                <p className="text-gray-600 text-sm">
                   Connect with me on LinkedIn or reach out through the contact form to share your story.
                 </p>
               </div>
             </section>
-            </div>
           </div>
         </article>
       </div>
 
       {/* Try the Banner Generator */}
-      <section className="py-24 relative">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto text-center">
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 rounded-3xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="relative bg-black rounded-3xl p-12 border border-gray-800">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/10 to-indigo-900/20 rounded-3xl"></div>
-                
-                <div className="relative z-10">
-                  <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-6">
-                    Ready to Try It?
-                  </h2>
-                  <p className="text-2xl text-gray-300 mb-10 leading-relaxed">
-                    Create your own professional banners without the AI frustration
-                  </p>
-                  <Link
-                    to="/imagemaker"
-                    className="inline-flex items-center gap-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 group shadow-xl"
-                  >
-                    Try the Banner Generator
-                    <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-                  </Link>
-                </div>
-              </div>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-2xl p-8 md:p-12">
+              <h2 className="text-3xl md:text-4xl font-light mb-4">
+                Ready to Try It?
+              </h2>
+              <p className="text-xl opacity-90 mb-8">
+                Create your own professional banners without the AI frustration
+              </p>
+              <Link
+                to="/imagemaker"
+                className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors group text-lg"
+              >
+                Try the Banner Generator
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </div>
           </div>
         </div>
