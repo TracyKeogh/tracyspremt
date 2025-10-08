@@ -1,107 +1,202 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Calendar, Clock, ArrowLeft, ArrowRight } from 'lucide-react';
 
 const Blog: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-20">
-        <div className="max-w-4xl mx-auto px-6">
-          <h1 className="text-5xl font-bold mb-4">Blog</h1>
-          <p className="text-xl opacity-90">Insights, stories, and lessons learned from building AI-powered solutions</p>
+      <section className="bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden">
+        {/* Background Network Animation */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+          <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-orange-500 rounded-full animate-pulse delay-1000"></div>
+          <div className="absolute bottom-1/3 left-1/2 w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse delay-500"></div>
+          <div className="absolute top-1/2 right-1/4 w-1 h-1 bg-orange-500 rounded-full animate-pulse delay-1500"></div>
         </div>
-      </div>
+
+        <div className="container mx-auto px-6 py-16 relative">
+          <div className="max-w-4xl mx-auto">
+            <Link 
+              to="/blog" 
+              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium mb-8 transition-colors group"
+            >
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+              Back to Blog
+            </Link>
+            
+            <div className="text-center">
+              <span className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                AI & Development
+              </span>
+              
+              <h1 className="text-4xl md:text-5xl font-light text-gray-800 mb-6 leading-tight">
+                The Problem That Led Me to Build an AI Banner Generator
+              </h1>
+              
+              <p className="text-xl text-gray-600 italic mb-8 leading-relaxed">
+                How I went from struggling with AI image generation to building a professional banner creation tool
+              </p>
+              
+              <div className="flex items-center justify-center gap-6 text-gray-600">
+                <span className="inline-flex items-center gap-2">
+                  <Calendar className="w-4 h-4" />
+                  October 8, 2024
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <Clock className="w-4 h-4" />
+                  5 min read
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Blog Content */}
       <div className="max-w-4xl mx-auto px-6 py-12">
-        {/* Blog Post */}
-        <article className="prose prose-lg max-w-none">
-          <header className="mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4 leading-tight">
-              The Problem That Led Me to Build an AI Banner Generator: A Tale of Frustration, Innovation, and Solution
-            </h1>
-            <p className="text-xl text-gray-600 italic mb-4">
-              How I went from struggling with AI image generation to building a professional banner creation tool
-            </p>
-            <div className="flex items-center text-gray-500 text-sm">
-              <span>By Tracy Keogh</span>
-              <span className="mx-2">•</span>
-              <time>October 2024</time>
-              <span className="mx-2">•</span>
-              <span>5 min read</span>
-            </div>
-          </header>
+        <article className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div className="p-8 md:p-12">
 
-          {/* Backstory */}
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">The Backstory: When AI Doesn't Understand Your Vision</h2>
-            <p className="text-gray-700 mb-4">
-              It all started with a simple request: <em>"I want to add my logo to this promotional banner."</em>
-            </p>
-            <p className="text-gray-700 mb-4">
-              Sounds easy, right? Not when you're working with AI image generation tools like Claude, DALL-E, or Midjourney. 
-              What followed was a journey of frustration that ultimately led to a breakthrough solution.
-            </p>
-          </section>
-
-          {/* The Problem */}
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">The Problem: AI Image Generation's Fundamental Flaws</h2>
-            
-            <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
-              <h3 className="text-lg font-semibold text-red-800 mb-2">1. The "Interpretation Problem"</h3>
-              <p className="text-red-700 mb-3">
-                When I asked Claude to add my SPREMT LABS logo to a banner, it didn't use my actual logo. 
-                Instead, it <strong>interpreted</strong> what it thought my logo should look like and created something completely different. 
-                This is a fundamental limitation of AI image generation - it can't work with exact images you provide.
-              </p>
-              <div className="bg-white p-3 rounded border">
-                <code className="text-red-800">
-                  ❌ What I asked for: "Add this exact logo to the banner"<br/>
-                  ❌ What I got: A completely different logo that "looked like" what I wanted
-                </code>
+            {/* Backstory */}
+            <section className="mb-12">
+              <h2 className="text-3xl font-light text-gray-800 mb-6">The Backstory: When AI Doesn't Understand Your Vision</h2>
+              <div className="space-y-4 text-gray-700 leading-relaxed">
+                <p>
+                  It all started with a simple request: <em className="text-blue-600">"I want to add my logo to this promotional banner."</em>
+                </p>
+                <p>
+                  Sounds easy, right? Not when you're working with AI image generation tools like Claude, DALL-E, or Midjourney. 
+                  What followed was a journey of frustration that ultimately led to a breakthrough solution.
+                </p>
               </div>
-            </div>
+            </section>
 
-            <div className="bg-orange-50 border-l-4 border-orange-400 p-4 mb-6">
-              <h3 className="text-lg font-semibold text-orange-800 mb-2">2. The Base64 Nightmare</h3>
-              <p className="text-orange-700 mb-3">
-                When I tried to provide my logo as base64 code, I hit another wall:
-              </p>
-              <ul className="text-orange-700 list-disc pl-5">
-                <li><strong>File size limitations:</strong> Base64 strings for high-quality logos are enormous</li>
-                <li><strong>Processing complexity:</strong> Most AI tools can't handle large base64 inputs</li>
-                <li><strong>Quality degradation:</strong> The conversion process often reduces image quality</li>
-              </ul>
-            </div>
+            {/* The Problem */}
+            <section className="mb-12">
+              <h2 className="text-3xl font-light text-gray-800 mb-8">The Problem: AI Image Generation's Fundamental Flaws</h2>
+              
+              <div className="space-y-6">
+                <div className="bg-gradient-to-r from-red-50 to-pink-50 border border-red-200 rounded-xl p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-red-600 font-bold text-sm">1</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-800 mb-3">The "Interpretation Problem"</h3>
+                      <p className="text-gray-700 mb-4 leading-relaxed">
+                        When I asked Claude to add my SPREMT LABS logo to a banner, it didn't use my actual logo. 
+                        Instead, it <strong className="text-red-600">interpreted</strong> what it thought my logo should look like and created something completely different. 
+                        This is a fundamental limitation of AI image generation - it can't work with exact images you provide.
+                      </p>
+                      <div className="bg-white border border-red-200 rounded-lg p-4">
+                        <div className="space-y-2 text-sm">
+                          <div className="flex items-center gap-2 text-red-700">
+                            <span className="text-red-500">❌</span>
+                            <span><strong>What I asked for:</strong> "Add this exact logo to the banner"</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-red-700">
+                            <span className="text-red-500">❌</span>
+                            <span><strong>What I got:</strong> A completely different logo that "looked like" what I wanted</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-            <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
-              <h3 className="text-lg font-semibold text-yellow-800 mb-2">3. The "Can't Edit Existing Images" Roadblock</h3>
-              <p className="text-yellow-700 mb-3">
-                AI image generation tools are fundamentally <em>generative</em>, not <em>editorial</em>. They can create new images 
-                but can't modify existing ones with precision. When I tried to get Claude to:
-              </p>
-              <ul className="text-yellow-700 list-disc pl-5">
-                <li>Insert my exact logo</li>
-                <li>Maintain specific positioning</li>
-                <li>Keep exact colors and styling</li>
-              </ul>
-              <p className="text-yellow-700 mt-3">The results were consistently disappointing.</p>
-            </div>
+                <div className="bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200 rounded-xl p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-orange-600 font-bold text-sm">2</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-800 mb-3">The Base64 Nightmare</h3>
+                      <p className="text-gray-700 mb-4 leading-relaxed">
+                        When I tried to provide my logo as base64 code, I hit another wall:
+                      </p>
+                      <ul className="text-gray-700 space-y-2">
+                        <li className="flex items-start gap-2">
+                          <span className="text-orange-500 mt-1">•</span>
+                          <span><strong>File size limitations:</strong> Base64 strings for high-quality logos are enormous</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-orange-500 mt-1">•</span>
+                          <span><strong>Processing complexity:</strong> Most AI tools can't handle large base64 inputs</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-orange-500 mt-1">•</span>
+                          <span><strong>Quality degradation:</strong> The conversion process often reduces image quality</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
 
-            <div className="bg-purple-50 border-l-4 border-purple-400 p-4 mb-6">
-              <h3 className="text-lg font-semibold text-purple-800 mb-2">4. The Consistency Problem</h3>
-              <p className="text-purple-700 mb-3">
-                Even when the AI generated something close to what I wanted, the downloaded version never matched what I saw on screen. 
-                This is a common issue with:
-              </p>
-              <ul className="text-purple-700 list-disc pl-5">
-                <li>Canvas rendering differences</li>
-                <li>Color space variations</li>
-                <li>Compression artifacts</li>
-                <li>Cross-platform compatibility issues</li>
-              </ul>
-            </div>
-          </section>
+                <div className="bg-gradient-to-r from-yellow-50 to-amber-50 border border-yellow-200 rounded-xl p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-yellow-600 font-bold text-sm">3</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-800 mb-3">The "Can't Edit Existing Images" Roadblock</h3>
+                      <p className="text-gray-700 mb-4 leading-relaxed">
+                        AI image generation tools are fundamentally <em>generative</em>, not <em>editorial</em>. They can create new images 
+                        but can't modify existing ones with precision. When I tried to get Claude to:
+                      </p>
+                      <ul className="text-gray-700 space-y-2 mb-4">
+                        <li className="flex items-start gap-2">
+                          <span className="text-yellow-500 mt-1">•</span>
+                          <span>Insert my exact logo</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-yellow-500 mt-1">•</span>
+                          <span>Maintain specific positioning</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-yellow-500 mt-1">•</span>
+                          <span>Keep exact colors and styling</span>
+                        </li>
+                      </ul>
+                      <p className="text-gray-700">The results were consistently disappointing.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 rounded-xl p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-purple-600 font-bold text-sm">4</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-800 mb-3">The Consistency Problem</h3>
+                      <p className="text-gray-700 mb-4 leading-relaxed">
+                        Even when the AI generated something close to what I wanted, the downloaded version never matched what I saw on screen. 
+                        This is a common issue with:
+                      </p>
+                      <ul className="text-gray-700 space-y-2">
+                        <li className="flex items-start gap-2">
+                          <span className="text-purple-500 mt-1">•</span>
+                          <span>Canvas rendering differences</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-purple-500 mt-1">•</span>
+                          <span>Color space variations</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-purple-500 mt-1">•</span>
+                          <span>Compression artifacts</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-purple-500 mt-1">•</span>
+                          <span>Cross-platform compatibility issues</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
 
           {/* Breaking Point */}
           <section className="mb-8">
@@ -307,20 +402,44 @@ const Blog: React.FC = () => {
             </div>
           </section>
 
-          {/* Call to Action */}
-          <section className="border-t border-gray-200 pt-8 mt-12">
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Have you experienced similar frustrations with AI tools?</h3>
-              <p className="text-gray-700 mb-4">
-                What solutions have you built to solve your own problems? I'd love to hear your stories and learn from your experiences.
-              </p>
-              <p className="text-gray-600 text-sm">
-                Connect with me on LinkedIn or reach out through the contact form to share your story.
-              </p>
-            </div>
-          </section>
+            {/* Call to Action */}
+            <section className="border-t border-gray-200 pt-8 mt-12">
+              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">Have you experienced similar frustrations with AI tools?</h3>
+                <p className="text-gray-700 mb-4">
+                  What solutions have you built to solve your own problems? I'd love to hear your stories and learn from your experiences.
+                </p>
+                <p className="text-gray-600 text-sm">
+                  Connect with me on LinkedIn or reach out through the contact form to share your story.
+                </p>
+              </div>
+            </section>
+          </div>
         </article>
       </div>
+
+      {/* Try the Banner Generator */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-2xl p-8 md:p-12">
+              <h2 className="text-3xl md:text-4xl font-light mb-4">
+                Ready to Try It?
+              </h2>
+              <p className="text-xl opacity-90 mb-8">
+                Create your own professional banners without the AI frustration
+              </p>
+              <Link
+                to="/imagemaker"
+                className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors group text-lg"
+              >
+                Try the Banner Generator
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
