@@ -7,6 +7,7 @@ import Results from './components/Results';
 import About from './components/About';
 import Contact from './components/Contact';
 import BannerGenerator from './components/BannerGenerator';
+import Blog from './components/Blog';
 import { usePageTracking } from './hooks/usePageTracking';
 
 function HomePage() {
@@ -38,6 +39,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/imagemaker" element={<BannerGenerator />} />
+        <Route path="/blog" element={<Blog />} />
       </Routes>
     </Router>
   );
