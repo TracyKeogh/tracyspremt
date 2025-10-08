@@ -4,25 +4,27 @@ import { Calendar, Clock, ArrowLeft, ArrowRight, Home } from 'lucide-react';
 
 const Blog: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-xl border-b border-gray-800/50">
         <div className="container mx-auto px-6">
-          <div className="flex items-center justify-between h-16">
-            <Link to="/" className="flex items-center gap-3 group">
-              <img 
-                src="/BrianLogoSpremt.png" 
-                alt="SPREMT LABS" 
-                className="w-8 h-8 object-contain group-hover:scale-105 transition-transform"
-              />
-              <div className="font-semibold text-xl text-gray-800 group-hover:text-blue-600 transition-colors">
+          <div className="flex items-center justify-between h-20">
+            <Link to="/" className="flex items-center gap-4 group">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                <img 
+                  src="/BrianLogoSpremt.png" 
+                  alt="SPREMT LABS" 
+                  className="w-6 h-6 object-contain filter brightness-0 invert"
+                />
+              </div>
+              <div className="font-bold text-2xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent group-hover:from-blue-300 group-hover:to-purple-300 transition-all duration-300">
                 SPREMT LABS
               </div>
             </Link>
             
             <Link 
               to="/" 
-              className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 font-medium transition-colors group"
+              className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-full text-blue-300 hover:from-blue-600/40 hover:to-purple-600/40 hover:text-blue-200 font-medium transition-all duration-300 group backdrop-blur-sm"
             >
               <Home className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               Back to Home
@@ -31,47 +33,47 @@ const Blog: React.FC = () => {
         </div>
       </nav>
 
-      {/* Header */}
-      <section className="pt-24 pb-16 relative overflow-hidden">
-        {/* Beautiful Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-purple-600/5 to-indigo-600/5"></div>
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 relative">
+        {/* Animated Background */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-blue-400/10 rounded-full blur-xl animate-pulse"></div>
-          <div className="absolute top-40 right-20 w-24 h-24 bg-purple-400/10 rounded-full blur-xl animate-pulse delay-1000"></div>
-          <div className="absolute bottom-20 left-1/3 w-20 h-20 bg-indigo-400/10 rounded-full blur-xl animate-pulse delay-500"></div>
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-900/20 via-purple-900/10 to-indigo-900/20"></div>
+          <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-40 right-32 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute bottom-20 left-1/3 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
         </div>
 
-        <div className="container mx-auto px-6 relative">
-          <div className="max-w-4xl mx-auto">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-5xl mx-auto">
             <Link 
               to="/blog" 
-              className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 font-medium mb-8 transition-colors group"
+              className="inline-flex items-center gap-3 text-gray-400 hover:text-blue-400 font-medium mb-12 transition-colors group"
             >
-              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+              <ArrowLeft className="w-5 h-5 group-hover:-translate-x-2 transition-transform" />
               Back to Blog
             </Link>
             
             <div className="text-center">
-              <span className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6 shadow-lg">
+              <span className="inline-block bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 px-6 py-3 rounded-full text-blue-300 font-semibold mb-8 backdrop-blur-sm">
                 AI & Development
               </span>
               
-              <h1 className="text-5xl md:text-6xl font-light text-gray-900 mb-6 leading-tight">
+              <h1 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent mb-8 leading-tight tracking-tight">
                 The Problem That Led Me to Build an AI Banner Generator
               </h1>
               
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-2xl text-gray-300 mb-12 leading-relaxed max-w-4xl mx-auto font-light">
                 How I went from struggling with AI image generation to building a professional banner creation tool
               </p>
               
-              <div className="flex items-center justify-center gap-6 text-gray-500">
-                <span className="inline-flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
-                  October 8, 2024
+              <div className="flex items-center justify-center gap-8 text-gray-400">
+                <span className="inline-flex items-center gap-3">
+                  <Calendar className="w-5 h-5" />
+                  <span className="text-lg">October 8, 2024</span>
                 </span>
-                <span className="inline-flex items-center gap-2">
-                  <Clock className="w-4 h-4" />
-                  5 min read
+                <span className="inline-flex items-center gap-3">
+                  <Clock className="w-5 h-5" />
+                  <span className="text-lg">5 min read</span>
                 </span>
               </div>
             </div>
@@ -80,16 +82,21 @@ const Blog: React.FC = () => {
       </section>
 
       {/* Blog Content */}
-      <div className="max-w-4xl mx-auto px-6 py-12">
-        <article className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-          <div className="p-8 md:p-12">
+      <div className="max-w-6xl mx-auto px-6 py-12">
+        <article className="relative group">
+          {/* Glowing Background Effect */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 rounded-3xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-500"></div>
+          
+          <div className="relative bg-black rounded-3xl border border-gray-800 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-purple-900/5 to-indigo-900/10"></div>
+            <div className="relative p-12 md:p-16">
 
             {/* Backstory */}
-            <section className="mb-12">
-              <h2 className="text-3xl font-light text-gray-800 mb-6">The Backstory: When AI Doesn't Understand Your Vision</h2>
-              <div className="space-y-4 text-gray-700 leading-relaxed">
+            <section className="mb-16">
+              <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-8">The Backstory: When AI Doesn't Understand Your Vision</h2>
+              <div className="space-y-6 text-gray-300 leading-relaxed text-lg">
                 <p>
-                  It all started with a simple request: <em className="text-blue-600">"I want to add my logo to this promotional banner."</em>
+                  It all started with a simple request: <em className="text-blue-400 font-semibold">"I want to add my logo to this promotional banner."</em>
                 </p>
                 <p>
                   Sounds easy, right? Not when you're working with AI image generation tools like Claude, DALL-E, or Midjourney. 
@@ -497,39 +504,47 @@ const Blog: React.FC = () => {
           </section>
 
             {/* Call to Action */}
-            <section className="border-t border-gray-200 pt-8 mt-12">
-              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Have you experienced similar frustrations with AI tools?</h3>
-                <p className="text-gray-700 mb-4">
+            <section className="border-t border-gray-800 pt-8 mt-12">
+              <div className="bg-gradient-to-r from-blue-900/20 to-indigo-900/20 rounded-xl p-8 border border-blue-500/30">
+                <h3 className="text-2xl font-bold text-white mb-4">Have you experienced similar frustrations with AI tools?</h3>
+                <p className="text-gray-300 mb-4 text-lg">
                   What solutions have you built to solve your own problems? I'd love to hear your stories and learn from your experiences.
                 </p>
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-400">
                   Connect with me on LinkedIn or reach out through the contact form to share your story.
                 </p>
               </div>
             </section>
+            </div>
           </div>
         </article>
       </div>
 
       {/* Try the Banner Generator */}
-      <section className="py-16 bg-white">
+      <section className="py-24 relative">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-2xl p-8 md:p-12">
-              <h2 className="text-3xl md:text-4xl font-light mb-4">
-                Ready to Try It?
-              </h2>
-              <p className="text-xl opacity-90 mb-8">
-                Create your own professional banners without the AI frustration
-              </p>
-              <Link
-                to="/imagemaker"
-                className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors group text-lg"
-              >
-                Try the Banner Generator
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
+          <div className="max-w-5xl mx-auto text-center">
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 rounded-3xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative bg-black rounded-3xl p-12 border border-gray-800">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/10 to-indigo-900/20 rounded-3xl"></div>
+                
+                <div className="relative z-10">
+                  <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-6">
+                    Ready to Try It?
+                  </h2>
+                  <p className="text-2xl text-gray-300 mb-10 leading-relaxed">
+                    Create your own professional banners without the AI frustration
+                  </p>
+                  <Link
+                    to="/imagemaker"
+                    className="inline-flex items-center gap-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 group shadow-xl"
+                  >
+                    Try the Banner Generator
+                    <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
