@@ -1,13 +1,15 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Results from './components/Results';
 import About from './components/About';
 import Contact from './components/Contact';
+import BannerGenerator from './components/BannerGenerator';
 import { usePageTracking } from './hooks/usePageTracking';
 
-function App() {
+function HomePage() {
   // Initialize page tracking
   usePageTracking();
   return (
@@ -27,6 +29,17 @@ function App() {
         <Contact />
       </div>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/imagemaker" element={<BannerGenerator />} />
+      </Routes>
+    </Router>
   );
 }
 
