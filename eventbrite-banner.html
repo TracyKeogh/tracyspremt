@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPREMT LABS Eventbrite Banner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .download-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 800px;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .banner {
+            width: 1920px;
+            height: 1080px;
+            background: #000000;
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo-container {
+            position: absolute;
+            top: 80px;
+            left: 100px;
+            z-index: 10;
+        }
+        
+        .logo {
+            height: 180px;
+            width: auto;
+            max-width: 600px;
+            crossOrigin: 'anonymous';
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+            image-rendering: auto;
+        }
+        
+        .logo-fallback {
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+        
+        .content {
+            position: absolute;
+            top: 280px;
+            left: 100px;
+            right: 100px;
+            z-index: 10;
+        }
+        
+        .workshop-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .main-title {
+            color: #ffffff;
+            font-size: 96px;
+            font-weight: 900;
+            line-height: 0.9;
+            margin: 0 0 30px 0;
+            letter-spacing: -3px;
+        }
+        
+        .subtitle {
+            color: #ffffff;
+            font-size: 36px;
+            font-weight: 400;
+            margin: 0 0 100px 0;
+            line-height: 1.3;
+            letter-spacing: -0.5px;
+            max-width: 1000px;
+        }
+        
+        .features {
+            position: absolute;
+            bottom: 100px;
+            left: 100px;
+            right: 100px;
+            display: flex;
+            gap: 40px;
+            z-index: 10;
+        }
+        
+        .feature-card {
+            background: #1a1a1a;
+            border: 1px solid #333333;
+            padding: 50px 40px;
+            border-radius: 16px;
+            flex: 1;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #555555;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .feature-title {
+            color: #4A90E2;
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        
+        .feature-desc {
+            color: #ffffff;
+            font-size: 18px;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+        
+        .instructions {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .instructions h3 {
+            color: #1a1a1a;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .instructions p, .instructions li {
+            color: #4a4a4a;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .spec-item {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            text-align: center;
+        }
+        
+        .spec-item h4 {
+            color: #667eea;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .spec-item p {
+            color: #4a4a4a;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="download-section">
+        <h2>🎯 SPREMT LABS Eventbrite Header Banner</h2>
+        <p>Clean, professional design ready for download</p>
+        <button class="download-btn" onclick="downloadBanner()">📥 Download with html2canvas</button>
+        <button class="download-btn" onclick="downloadBannerManual()">🎨 Download Manual (with Logo)</button>
+        <button class="download-btn" onclick="downloadBannerHighRes()">🔥 Download High-Res (4K)</button>
+        <button class="download-btn" onclick="takeScreenshot()">📸 Right-click Screenshot</button>
+    </div>
+    
+    <div class="banner" id="banner">
+        <!-- Your actual SPREMT LABS logo -->
+        <div class="logo-container">
+            <img src="https://raw.githubusercontent.com/TracyKeogh/tracyspremt/main/public/spremtlogo2.png" alt="SPREMT LABS Logo" class="logo" crossOrigin="anonymous" onerror="this.style.display='none'; document.querySelector('.logo-container').innerHTML='<div style=\'color:white;font-size:32px;font-weight:bold;\'>SPREMT LABS</div>'">
+        </div>
+        
+        <div class="content">
+            <div class="workshop-badge">HANDS-ON WORKSHOP</div>
+            <h1 class="main-title">Turn Your Idea Into Reality</h1>
+            <p class="subtitle">Build a working prototype in under 1 hour.<br>— no coding experience needed</p>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-title">AI-Powered Tools</div>
+                <div class="feature-desc">Use Cursor, Bolt, Lovable & Claude to build fast.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">Leave With Results</div>
+                <div class="feature-desc">Walk away with a live, working prototype.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">For Everyone</div>
+                <div class="feature-desc">Non-tech business owners & professionals.</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="instructions">
+        <h3>📋 Eventbrite Header Specifications</h3>
+        
+        <div class="spec-grid">
+            <div class="spec-item">
+                <h4>📐 Size</h4>
+                <p>1920×1080px</p>
+            </div>
+            <div class="spec-item">
+                <h4>🎨 Style</h4>
+                <p>Clean & Minimal</p>
+            </div>
+            <div class="spec-item">
+                <h4>🔤 Format</h4>
+                <p>PNG/JPG</p>
+            </div>
+            <div class="spec-item">
+                <h4>✨ Quality</h4>
+                <p>Eventbrite Ready</p>
+            </div>
+        </div>
+        
+        <h4>📥 How to Download:</h4>
+        <ol>
+            <li><strong>Click "Download Banner as PNG"</strong> for automatic download</li>
+            <li><strong>Or right-click</strong> on the banner and "Save image as..."</li>
+            <li><strong>Or take a screenshot</strong> of just the banner area</li>
+        </ol>
+        
+        <p><strong>✅ Perfect for Eventbrite!</strong> This banner matches your desired design with clean typography and professional layout.</p>
+    </div>
+
+    <script>
+        function downloadBanner() {
+            console.log('Download button clicked');
+            
+            // Check if html2canvas is loaded
+            if (typeof html2canvas === 'undefined') {
+                alert('Library still loading... Please wait a moment and try again.');
+                return;
+            }
+            
+            console.log('html2canvas is available, starting download...');
+            
+            // Use html2canvas to capture the exact banner as displayed
+            html2canvas(document.getElementById('banner'), {
+                scale: 1,
+                backgroundColor: '#000000',
+                useCORS: true,
+                allowTaint: true,
+                width: 1920,
+                height: 1080,
+                logging: true,
+                onclone: function(clonedDoc) {
+                    console.log('Cloning document...');
+                    // Ensure the logo is loaded in the cloned document
+                    const clonedBanner = clonedDoc.getElementById('banner');
+                    const logoImg = clonedBanner.querySelector('.logo');
+                    if (logoImg) {
+                        logoImg.crossOrigin = 'anonymous';
+                        console.log('Logo crossOrigin set');
+                    }
+                }
+            }).then(canvas => {
+                console.log('Canvas created successfully');
+                const link = document.createElement('a');
+                link.download = 'spremt-labs-eventbrite-banner.png';
+                link.href = canvas.toDataURL('image/png');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                console.log('Download triggered');
+            }).catch(error => {
+                console.error('Download failed:', error);
+                alert('Download failed: ' + error.message + '\n\nTry the "Manual Download" button instead.');
+            });
+        }
+        
+        function downloadBannerManual() {
+            console.log('Manual download started...');
+            
+            try {
+                // Manual canvas creation with logo
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                
+                canvas.width = 1920;
+                canvas.height = 1080;
+                
+                // Fill with black background
+                ctx.fillStyle = '#000000';
+                ctx.fillRect(0, 0, 1920, 1080);
+                
+                // Load and draw the logo
+                const logoImg = new Image();
+                logoImg.crossOrigin = 'anonymous';
+                
+                logoImg.onload = function() {
+                    console.log('Logo loaded successfully');
+                    try {
+                        // Draw logo with high quality scaling (bigger)
+                        ctx.imageSmoothingEnabled = true;
+                        ctx.imageSmoothingQuality = 'high';
+                        ctx.drawImage(logoImg, 100, 80, 600, 180);
+                        
+                        // Add workshop badge with gradient (adjusted for bigger logo)
+                        const gradient = ctx.createLinearGradient(100, 280, 350, 280);
+                        gradient.addColorStop(0, '#667eea');
+                        gradient.addColorStop(1, '#764ba2');
+                        ctx.fillStyle = gradient;
+                        ctx.fillRect(100, 280, 250, 40);
+                        
+                        ctx.fillStyle = '#ffffff';
+                        ctx.font = '600 16px Inter, sans-serif';
+                        ctx.textAlign = 'left';
+                        ctx.fillText('HANDS-ON WORKSHOP', 115, 305);
+                        
+                        // Add main title (adjusted for bigger logo)
+                        ctx.fillStyle = '#ffffff';
+                        ctx.font = '900 96px Inter, sans-serif';
+                        ctx.fillText('Turn Your Idea Into Reality', 100, 420);
+                        
+                        // Add subtitle
+                        ctx.font = '400 36px Inter, sans-serif';
+                        ctx.fillText('Build a working prototype in under 1 hour.', 100, 490);
+                        ctx.fillText('— no coding experience needed', 100, 540);
+                        
+                        // Add feature cards
+                        const cardY = 780;
+                        const cardHeight = 200;
+                        const cardWidth = 500;
+                        
+                        // Card 1
+                        ctx.fillStyle = '#1a1a1a';
+                        ctx.fillRect(100, cardY, cardWidth, cardHeight);
+                        ctx.strokeStyle = '#333333';
+                        ctx.strokeRect(100, cardY, cardWidth, cardHeight);
+                        
+                        ctx.fillStyle = '#4A90E2';
+                        ctx.font = '700 24px Inter, sans-serif';
+                        ctx.fillText('AI-Powered Tools', 120, cardY + 40);
+                        
+                        ctx.fillStyle = '#ffffff';
+                        ctx.font = '400 18px Inter, sans-serif';
+                        ctx.fillText('Use Cursor, Bolt, Lovable & Claude', 120, cardY + 80);
+                        ctx.fillText('to build fast.', 120, cardY + 110);
+                        
+                        // Card 2
+                        ctx.fillStyle = '#1a1a1a';
+                        ctx.fillRect(640, cardY, cardWidth, cardHeight);
+                        ctx.strokeStyle = '#333333';
+                        ctx.strokeRect(640, cardY, cardWidth, cardHeight);
+                        
+                        ctx.fillStyle = '#4A90E2';
+                        ctx.font = '700 24px Inter, sans-serif';
+                        ctx.fillText('Leave With Results', 660, cardY + 40);
+                        
+                        ctx.fillStyle = '#ffffff';
+                        ctx.font = '400 18px Inter, sans-serif';
+                        ctx.fillText('Walk away with a live,', 660, cardY + 80);
+                        ctx.fillText('working prototype.', 660, cardY + 110);
+                        
+                        // Card 3
+                        ctx.fillStyle = '#1a1a1a';
+                        ctx.fillRect(1180, cardY, cardWidth, cardHeight);
+                        ctx.strokeStyle = '#333333';
+                        ctx.strokeRect(1180, cardY, cardWidth, cardHeight);
+                        
+                        ctx.fillStyle = '#4A90E2';
+                        ctx.font = '700 24px Inter, sans-serif';
+                        ctx.fillText('For Everyone', 1200, cardY + 40);
+                        
+                        ctx.fillStyle = '#ffffff';
+                        ctx.font = '400 18px Inter, sans-serif';
+                        ctx.fillText('Non-tech business owners', 1200, cardY + 80);
+                        ctx.fillText('& professionals.', 1200, cardY + 110);
+                        
+                        console.log('Canvas drawing complete, starting download...');
+                        
+                        // Download the canvas as PNG
+                        const link = document.createElement('a');
+                        link.download = 'spremt-labs-eventbrite-banner.png';
+                        link.href = canvas.toDataURL('image/png');
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        
+                        console.log('Download completed successfully');
+                    } catch (drawError) {
+                        console.error('Error drawing on canvas:', drawError);
+                        alert('Error creating banner: ' + drawError.message);
+                    }
+                };
+                
+                logoImg.onerror = function() {
+                    console.error('Failed to load logo image');
+                    alert('Failed to load logo. Please try the html2canvas download instead.');
+                };
+                
+                logoImg.src = 'https://raw.githubusercontent.com/TracyKeogh/tracyspremt/main/public/spremtlogo2.png';
+                
+            } catch (error) {
+                console.error('Manual download error:', error);
+                alert('Manual download failed: ' + error.message);
+            }
+        }
+        
+        function downloadBannerHighRes() {
+            console.log('High-res download started...');
+            
+            try {
+                // Create a high-resolution canvas (4K)
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                
+                // Use 4K resolution for ultra-high quality
+                canvas.width = 3840;  // 4K width
+                canvas.height = 2160; // 4K height
+                
+                // Scale factor for high-res
+                const scale = 2;
+                
+                // Fill with black background
+                ctx.fillStyle = '#000000';
+                ctx.fillRect(0, 0, 3840, 2160);
+                
+                // Load and draw the logo at high resolution
+                const logoImg = new Image();
+                logoImg.crossOrigin = 'anonymous';
+                
+                logoImg.onload = function() {
+                    console.log('High-res logo loaded successfully');
+                    try {
+                        // Draw logo with maximum quality (bigger)
+                        ctx.imageSmoothingEnabled = true;
+                        ctx.imageSmoothingQuality = 'high';
+                        ctx.drawImage(logoImg, 200 * scale, 160 * scale, 1200 * scale, 360 * scale);
+                        
+                        // Add workshop badge with gradient (scaled, adjusted for bigger logo)
+                        const gradient = ctx.createLinearGradient(200 * scale, 560 * scale, 700 * scale, 560 * scale);
+                        gradient.addColorStop(0, '#667eea');
+                        gradient.addColorStop(1, '#764ba2');
+                        ctx.fillStyle = gradient;
+                        ctx.fillRect(200 * scale, 560 * scale, 500 * scale, 80 * scale);
+                        
+                        ctx.fillStyle = '#ffffff';
+                        ctx.font = '600 ' + (32 * scale) + 'px Inter, sans-serif';
+                        ctx.textAlign = 'left';
+                        ctx.fillText('HANDS-ON WORKSHOP', 230 * scale, 610 * scale);
+                        
+                        // Add main title (scaled, adjusted for bigger logo)
+                        ctx.fillStyle = '#ffffff';
+                        ctx.font = '900 ' + (192 * scale) + 'px Inter, sans-serif';
+                        ctx.fillText('Turn Your Idea Into Reality', 200 * scale, 840 * scale);
+                        
+                        // Add subtitle (scaled)
+                        ctx.font = '400 ' + (72 * scale) + 'px Inter, sans-serif';
+                        ctx.fillText('Build a working prototype in under 1 hour.', 200 * scale, 980 * scale);
+                        ctx.fillText('— no coding experience needed', 200 * scale, 1080 * scale);
+                        
+                        // Add feature cards (scaled)
+                        const cardY = 1560 * scale;
+                        const cardHeight = 400 * scale;
+                        const cardWidth = 1000 * scale;
+                        
+                        // Card 1
+                        ctx.fillStyle = '#1a1a1a';
+                        ctx.fillRect(200 * scale, cardY, cardWidth, cardHeight);
+                        ctx.strokeStyle = '#333333';
+                        ctx.lineWidth = 2 * scale;
+                        ctx.strokeRect(200 * scale, cardY, cardWidth, cardHeight);
+                        
+                        ctx.fillStyle = '#4A90E2';
+                        ctx.font = '700 ' + (48 * scale) + 'px Inter, sans-serif';
+                        ctx.fillText('AI-Powered Tools', 240 * scale, cardY + 80 * scale);
+                        
+                        ctx.fillStyle = '#ffffff';
+                        ctx.font = '400 ' + (36 * scale) + 'px Inter, sans-serif';
+                        ctx.fillText('Use Cursor, Bolt, Lovable & Claude', 240 * scale, cardY + 160 * scale);
+                        ctx.fillText('to build fast.', 240 * scale, cardY + 220 * scale);
+                        
+                        // Card 2
+                        ctx.fillStyle = '#1a1a1a';
+                        ctx.fillRect(1280 * scale, cardY, cardWidth, cardHeight);
+                        ctx.strokeRect(1280 * scale, cardY, cardWidth, cardHeight);
+                        
+                        ctx.fillStyle = '#4A90E2';
+                        ctx.font = '700 ' + (48 * scale) + 'px Inter, sans-serif';
+                        ctx.fillText('Leave With Results', 1320 * scale, cardY + 80 * scale);
+                        
+                        ctx.fillStyle = '#ffffff';
+                        ctx.font = '400 ' + (36 * scale) + 'px Inter, sans-serif';
+                        ctx.fillText('Walk away with a live,', 1320 * scale, cardY + 160 * scale);
+                        ctx.fillText('working prototype.', 1320 * scale, cardY + 220 * scale);
+                        
+                        // Card 3
+                        ctx.fillStyle = '#1a1a1a';
+                        ctx.fillRect(2360 * scale, cardY, cardWidth, cardHeight);
+                        ctx.strokeRect(2360 * scale, cardY, cardWidth, cardHeight);
+                        
+                        ctx.fillStyle = '#4A90E2';
+                        ctx.font = '700 ' + (48 * scale) + 'px Inter, sans-serif';
+                        ctx.fillText('For Everyone', 2400 * scale, cardY + 80 * scale);
+                        
+                        ctx.fillStyle = '#ffffff';
+                        ctx.font = '400 ' + (36 * scale) + 'px Inter, sans-serif';
+                        ctx.fillText('Non-tech business owners', 2400 * scale, cardY + 160 * scale);
+                        ctx.fillText('& professionals.', 2400 * scale, cardY + 220 * scale);
+                        
+                        console.log('High-res canvas drawing complete, starting download...');
+                        
+                        // Download the high-res canvas as PNG
+                        const link = document.createElement('a');
+                        link.download = 'spremt-labs-eventbrite-banner-4k.png';
+                        link.href = canvas.toDataURL('image/png');
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        
+                        console.log('High-res download completed successfully');
+                    } catch (drawError) {
+                        console.error('Error drawing high-res canvas:', drawError);
+                        alert('Error creating high-res banner: ' + drawError.message);
+                    }
+                };
+                
+                logoImg.onerror = function() {
+                    console.error('Failed to load logo for high-res download');
+                    alert('Failed to load logo for high-res download. Please try the regular download instead.');
+                };
+                
+                logoImg.src = 'https://raw.githubusercontent.com/TracyKeogh/tracyspremt/main/public/spremtlogo2.png';
+                
+            } catch (error) {
+                console.error('High-res download error:', error);
+                alert('High-res download failed: ' + error.message);
+            }
+        }
+        
+        function takeScreenshot() {
+            alert('Right-click on the banner above and select "Save image as..." to save the banner as an image file.');
+        }
+        // Add html2canvas library for exact banner capture
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>

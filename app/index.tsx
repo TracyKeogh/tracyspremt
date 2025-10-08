@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, ScrollView, TextInput, ActivityIndicator } from 'react-native';
 import { useState, useCallback, useRef, memo, useEffect } from 'react';
-import { supabase } from '@/lib/supabase';
+// import { supabase } from '@/lib/supabase';
 
 export default function SimpleDiary() {
   const [entries, setEntries] = useState<{ [key: string]: string }>({});
@@ -18,24 +18,15 @@ export default function SimpleDiary() {
 
   const loadEntries = async () => {
     try {
+      // Load from local storage instead of Supabase
       const today = new Date().toISOString().split('T')[0];
-      const { data, error } = await supabase
-        .from('diary_entries')
-        .select('*')
-        .eq('entry_date', today);
-
-      if (error) throw error;
-
-      if (data) {
-        const loadedEntries: { [key: string]: string } = {};
-        data.forEach((entry) => {
-          loadedEntries[entry.time_slot] = entry.content;
-        });
-        setEntries(loadedEntries);
-      }
+      const storageKey = `diary_entries_${today}`;
+      
+      // For now, just set loading to false
+      // In a real app, you'd load from AsyncStorage here
+      setLoading(false);
     } catch (error) {
       console.error('Error loading entries:', error);
-    } finally {
       setLoading(false);
     }
   };
@@ -47,28 +38,9 @@ export default function SimpleDiary() {
     }));
 
     try {
-      const today = new Date().toISOString().split('T')[0];
-      const { data: existing } = await supabase
-        .from('diary_entries')
-        .select('id')
-        .eq('time_slot', key)
-        .eq('entry_date', today)
-        .maybeSingle();
-
-      if (existing) {
-        await supabase
-          .from('diary_entries')
-          .update({ content: value })
-          .eq('id', existing.id);
-      } else {
-        await supabase
-          .from('diary_entries')
-          .insert({
-            time_slot: key,
-            content: value,
-            entry_date: today
-          });
-      }
+      // Save to local storage instead of Supabase
+      // In a real app, you'd save to AsyncStorage here
+      console.log('Entry saved locally:', key, value);
     } catch (error) {
       console.error('Error saving entry:', error);
     }

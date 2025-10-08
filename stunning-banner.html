@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPREMT LABS - Stunning Promotional Banner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .download-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 800px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+        }
+        
+        .banner {
+            width: 1920px;
+            height: 1080px;
+            background: #000000;
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Pure black background - no effects */
+        .bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: transparent;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        /* Removed floating particles for pure black background */
+        .particles {
+            display: none;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+        
+        .particle:nth-child(1) { width: 4px; height: 4px; top: 10%; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 6px; height: 6px; top: 20%; left: 80%; animation-delay: 2s; }
+        .particle:nth-child(3) { width: 3px; height: 3px; top: 60%; left: 20%; animation-delay: 4s; }
+        .particle:nth-child(4) { width: 5px; height: 5px; top: 80%; left: 70%; animation-delay: 6s; }
+        .particle:nth-child(5) { width: 4px; height: 4px; top: 30%; left: 60%; animation-delay: 8s; }
+        
+        @keyframes float {
+            0% { transform: translateY(0px) translateX(0px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
+        }
+        
+        /* Removed geometric patterns for pure black background */
+        .geometric-bg {
+            display: none;
+        }
+        
+        @keyframes geometricMove {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            50% { transform: translateX(-50px) rotate(5deg); }
+        }
+        
+        /* Logo styling */
+        .logo-container {
+            position: absolute;
+            top: 60px;
+            left: 80px;
+            z-index: 10;
+        }
+        
+        .logo {
+            height: 200px;
+            width: auto;
+            max-width: 700px;
+            filter: none;
+            transition: none;
+        }
+        
+        .logo:hover {
+            filter: none;
+            transform: none;
+        }
+        
+        /* Content styling */
+        .content {
+            position: absolute;
+            top: 280px;
+            left: 80px;
+            right: 80px;
+            z-index: 10;
+        }
+        
+        .workshop-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            animation: badgePulse 3s ease-in-out infinite;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); }
+            50% { box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6); }
+        }
+        
+        .main-title {
+            color: white;
+            font-size: 88px;
+            font-weight: 900;
+            line-height: 0.9;
+            margin: 0 0 30px 0;
+            text-shadow: none;
+            letter-spacing: -3px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        @keyframes titleGlow {
+            0%, 100% { filter: brightness(1) saturate(1); }
+            50% { filter: brightness(1.1) saturate(1.2); }
+        }
+        
+        .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 32px;
+            font-weight: 400;
+            margin: 0 0 80px 0;
+            line-height: 1.4;
+            letter-spacing: -0.5px;
+            max-width: 900px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Feature cards with glassmorphism */
+        .features {
+            position: absolute;
+            bottom: 200px;
+            left: 80px;
+            right: 80px;
+            display: flex;
+            gap: 30px;
+            z-index: 10;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 45px 35px;
+            border-radius: 25px;
+            flex: 1;
+            color: white;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.12);
+        }
+        
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        
+        .feature-icon {
+            font-size: 36px;
+            margin-bottom: 20px;
+            display: block;
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+            animation: iconFloat 6s ease-in-out infinite;
+        }
+        
+        .feature-card:nth-child(1) .feature-icon { animation-delay: 0s; }
+        .feature-card:nth-child(2) .feature-icon { animation-delay: 2s; }
+        .feature-card:nth-child(3) .feature-icon { animation-delay: 4s; }
+        
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .feature-title {
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 2;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .feature-desc {
+            font-size: 16px;
+            opacity: 0.9;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Instructions styling */
+        .instructions {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 800px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .instructions h3 {
+            color: #1a1a1a;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .instructions p, .instructions li {
+            color: #4a4a4a;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .spec-item {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            text-align: center;
+        }
+        
+        .spec-item h4 {
+            color: #667eea;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .spec-item p {
+            color: #4a4a4a;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="download-section">
+        <h2>✨ SPREMT LABS - Stunning Promotional Banner</h2>
+        <p>Beautiful, modern design with stunning visual effects</p>
+        <button class="download-btn" onclick="downloadBanner()">🎨 Download Stunning Banner</button>
+        <button class="download-btn" onclick="downloadBannerHighRes()">🔥 Download Ultra-HD (4K)</button>
+        <button class="download-btn" onclick="takeScreenshot()">📸 Screenshot Method</button>
+    </div>
+    
+    <div class="banner" id="banner">
+        <!-- Stunning animated background -->
+        <div class="bg-animation"></div>
+        
+        <!-- Floating particles -->
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
+        <!-- Geometric background -->
+        <div class="geometric-bg"></div>
+        
+        <!-- Your actual SPREMT LABS logo -->
+        <div class="logo-container">
+            <img src="https://raw.githubusercontent.com/TracyKeogh/tracyspremt/main/public/spremtlogo2.png" alt="SPREMT LABS Logo" class="logo" crossOrigin="anonymous" onerror="this.style.display='none'; document.querySelector('.logo-container').innerHTML='<div style=\'color:white;font-size:36px;font-weight:bold;letter-spacing:3px;\'>SPREMT LABS</div>'">
+        </div>
+        
+        <div class="content">
+            <div class="workshop-badge">HANDS-ON WORKSHOP</div>
+            <h1 class="main-title">Turn Your Idea Into Reality</h1>
+            <p class="subtitle">Build a working prototype in under 1 hour<br>— no coding experience needed</p>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon" style="color: #FFD700;">⚡</div>
+                <div class="feature-title">AI-Powered Tools</div>
+                <div class="feature-desc">Use Cursor, Bolt, Lovable & Claude to build fast.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="color: #FF6B6B;">🚀</div>
+                <div class="feature-title">Leave With Results</div>
+                <div class="feature-desc">Walk away with a live, working prototype.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="color: #FFD700;">💡</div>
+                <div class="feature-title">For Everyone</div>
+                <div class="feature-desc">Founders, professionals & creative thinkers.</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="instructions">
+        <h3>🌟 Stunning SPREMT LABS Banner Features</h3>
+        
+        <div class="spec-grid">
+            <div class="spec-item">
+                <h4>🎨 Visual Effects</h4>
+                <p>Animated gradients, floating particles, glassmorphism</p>
+            </div>
+            <div class="spec-item">
+                <h4>✨ Typography</h4>
+                <p>Space Grotesk & Inter fonts with gradient text</p>
+            </div>
+            <div class="spec-item">
+                <h4>🔥 Interactions</h4>
+                <p>Hover effects, smooth animations, glowing elements</p>
+            </div>
+            <div class="spec-item">
+                <h4>📐 Quality</h4>
+                <p>1920×1080 standard, 4K ultra-high resolution</p>
+            </div>
+        </div>
+        
+        <h4>📥 How to Download:</h4>
+        <ol>
+            <li><strong>🎨 Download Stunning Banner</strong> - Beautiful high-quality version</li>
+            <li><strong>🔥 Download Ultra-HD (4K)</strong> - Maximum quality for print/large displays</li>
+            <li><strong>📸 Screenshot Method</strong> - Right-click and save as image</li>
+        </ol>
+        
+        <p><strong>✨ This banner features stunning modern design with animated backgrounds, glassmorphism effects, and your actual SPREMT LABS logo!</strong></p>
+    </div>
+
+    <script>
+        function downloadBanner() {
+            console.log('Stunning banner download started...');
+            
+            if (typeof html2canvas === 'undefined') {
+                alert('Library still loading... Please wait a moment and try again.');
+                return;
+            }
+            
+            html2canvas(document.getElementById('banner'), {
+                scale: 2,
+                backgroundColor: '#000000',
+                useCORS: true,
+                allowTaint: true,
+                width: 1920,
+                height: 1080,
+                logging: true,
+                onclone: function(clonedDoc) {
+                    const clonedBanner = clonedDoc.getElementById('banner');
+                    const logoImg = clonedBanner.querySelector('.logo');
+                    if (logoImg) {
+                        logoImg.crossOrigin = 'anonymous';
+                    }
+                }
+            }).then(canvas => {
+                console.log('Stunning banner canvas created successfully');
+                const link = document.createElement('a');
+                link.download = 'spremt-labs-stunning-banner.png';
+                link.href = canvas.toDataURL('image/png');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                console.log('Stunning banner download completed');
+            }).catch(error => {
+                console.error('Stunning banner download failed:', error);
+                alert('Download failed: ' + error.message + '\n\nTry the screenshot method instead.');
+            });
+        }
+        
+        function downloadBannerHighRes() {
+            console.log('Ultra-HD download started...');
+            
+            try {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                
+                canvas.width = 3840;
+                canvas.height = 2160;
+                const scale = 2;
+                
+                // Create pure black background
+                ctx.fillStyle = '#000000';
+                ctx.fillRect(0, 0, 3840, 2160);
+                
+                // Load and draw the logo
+                const logoImg = new Image();
+                logoImg.crossOrigin = 'anonymous';
+                
+                logoImg.onload = function() {
+                    console.log('Ultra-HD logo loaded successfully');
+                    try {
+                        // Draw logo with maximum quality - bigger size
+                        ctx.imageSmoothingEnabled = true;
+                        ctx.imageSmoothingQuality = 'high';
+                        ctx.drawImage(logoImg, 160 * scale, 120 * scale, 1400 * scale, 400 * scale);
+                        
+                        // Add workshop badge with proper styling - moved down
+                        const badgeGradient = ctx.createLinearGradient(160 * scale, 560 * scale, 700 * scale, 560 * scale);
+                        badgeGradient.addColorStop(0, '#667eea');
+                        badgeGradient.addColorStop(1, '#764ba2');
+                        ctx.fillStyle = badgeGradient;
+                        // Draw rounded rectangle for badge
+                        const badgeX = 160 * scale;
+                        const badgeY = 560 * scale;
+                        const badgeW = 540 * scale;
+                        const badgeH = 70 * scale;
+                        const radius = 35 * scale;
+                        ctx.beginPath();
+                        ctx.moveTo(badgeX + radius, badgeY);
+                        ctx.lineTo(badgeX + badgeW - radius, badgeY);
+                        ctx.quadraticCurveTo(badgeX + badgeW, badgeY, badgeX + badgeW, badgeY + radius);
+                        ctx.lineTo(badgeX + badgeW, badgeY + badgeH - radius);
+                        ctx.quadraticCurveTo(badgeX + badgeW, badgeY + badgeH, badgeX + badgeW - radius, badgeY + badgeH);
+                        ctx.lineTo(badgeX + radius, badgeY + badgeH);
+                        ctx.quadraticCurveTo(badgeX, badgeY + badgeH, badgeX, badgeY + badgeH - radius);
+                        ctx.lineTo(badgeX, badgeY + radius);
+                        ctx.quadraticCurveTo(badgeX, badgeY, badgeX + radius, badgeY);
+                        ctx.closePath();
+                        ctx.fill();
+                        
+                        ctx.fillStyle = '#ffffff';
+                        ctx.font = '700 ' + (32 * scale) + 'px Space Grotesk, sans-serif';
+                        ctx.textAlign = 'left';
+                        ctx.fillText('HANDS-ON WORKSHOP', 190 * scale, 605 * scale);
+                        
+                        // Add main title as plain white text to match browser - moved down
+                        ctx.fillStyle = '#ffffff';
+                        ctx.font = '900 ' + (176 * scale) + 'px Space Grotesk, sans-serif';
+                        ctx.textAlign = 'left';
+                        ctx.fillText('Turn Your Idea Into Reality', 160 * scale, 1000 * scale);
+                        
+                        // Add subtitle - moved down
+                        ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                        ctx.font = '400 ' + (64 * scale) + 'px Inter, sans-serif';
+                        ctx.fillText('Build a working prototype in under 1 hour.', 160 * scale, 1120 * scale);
+                        ctx.fillText('— no coding experience needed', 160 * scale, 1240 * scale);
+                        
+                        // Add feature cards with proper glassmorphism styling - moved up
+                        const cardY = 1200 * scale;
+                        const cardHeight = 400 * scale;
+                        const cardWidth = 1000 * scale;
+                        const cardRadius = 25 * scale;
+                        
+                        // Card 1 - Draw rounded rectangle
+                        ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+                        const card1X = 160 * scale;
+                        ctx.beginPath();
+                        ctx.moveTo(card1X + cardRadius, cardY);
+                        ctx.lineTo(card1X + cardWidth - cardRadius, cardY);
+                        ctx.quadraticCurveTo(card1X + cardWidth, cardY, card1X + cardWidth, cardY + cardRadius);
+                        ctx.lineTo(card1X + cardWidth, cardY + cardHeight - cardRadius);
+                        ctx.quadraticCurveTo(card1X + cardWidth, cardY + cardHeight, card1X + cardWidth - cardRadius, cardY + cardHeight);
+                        ctx.lineTo(card1X + cardRadius, cardY + cardHeight);
+                        ctx.quadraticCurveTo(card1X, cardY + cardHeight, card1X, cardY + cardHeight - cardRadius);
+                        ctx.lineTo(card1X, cardY + cardRadius);
+                        ctx.quadraticCurveTo(card1X, cardY, card1X + cardRadius, cardY);
+                        ctx.closePath();
+                        ctx.fill();
+                        
+                        ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+                        ctx.lineWidth = 2 * scale;
+                        ctx.stroke();
+                        
+                        ctx.fillStyle = '#FFD700';
+                        ctx.font = '700 ' + (48 * scale) + 'px Space Grotesk, sans-serif';
+                        ctx.fillText('⚡ AI-Powered Tools', 200 * scale, cardY + 80 * scale);
+                        
+                        ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                        ctx.font = '400 ' + (32 * scale) + 'px Inter, sans-serif';
+                        ctx.fillText('Use Cursor, Bolt, Lovable & Claude', 200 * scale, cardY + 160 * scale);
+                        ctx.fillText('to build fast.', 200 * scale, cardY + 220 * scale);
+                        
+                        // Card 2 - Draw rounded rectangle
+                        const card2X = 1280 * scale;
+                        ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+                        ctx.beginPath();
+                        ctx.moveTo(card2X + cardRadius, cardY);
+                        ctx.lineTo(card2X + cardWidth - cardRadius, cardY);
+                        ctx.quadraticCurveTo(card2X + cardWidth, cardY, card2X + cardWidth, cardY + cardRadius);
+                        ctx.lineTo(card2X + cardWidth, cardY + cardHeight - cardRadius);
+                        ctx.quadraticCurveTo(card2X + cardWidth, cardY + cardHeight, card2X + cardWidth - cardRadius, cardY + cardHeight);
+                        ctx.lineTo(card2X + cardRadius, cardY + cardHeight);
+                        ctx.quadraticCurveTo(card2X, cardY + cardHeight, card2X, cardY + cardHeight - cardRadius);
+                        ctx.lineTo(card2X, cardY + cardRadius);
+                        ctx.quadraticCurveTo(card2X, cardY, card2X + cardRadius, cardY);
+                        ctx.closePath();
+                        ctx.fill();
+                        ctx.stroke();
+                        
+                        ctx.fillStyle = '#FF6B6B';
+                        ctx.font = '700 ' + (48 * scale) + 'px Space Grotesk, sans-serif';
+                        ctx.fillText('🚀 Leave With Results', 1320 * scale, cardY + 80 * scale);
+                        
+                        ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                        ctx.font = '400 ' + (32 * scale) + 'px Inter, sans-serif';
+                        ctx.fillText('Walk away with a live,', 1320 * scale, cardY + 160 * scale);
+                        ctx.fillText('working prototype.', 1320 * scale, cardY + 220 * scale);
+                        
+                        // Card 3 - Draw rounded rectangle
+                        const card3X = 2400 * scale;
+                        ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+                        ctx.beginPath();
+                        ctx.moveTo(card3X + cardRadius, cardY);
+                        ctx.lineTo(card3X + cardWidth - cardRadius, cardY);
+                        ctx.quadraticCurveTo(card3X + cardWidth, cardY, card3X + cardWidth, cardY + cardRadius);
+                        ctx.lineTo(card3X + cardWidth, cardY + cardHeight - cardRadius);
+                        ctx.quadraticCurveTo(card3X + cardWidth, cardY + cardHeight, card3X + cardWidth - cardRadius, cardY + cardHeight);
+                        ctx.lineTo(card3X + cardRadius, cardY + cardHeight);
+                        ctx.quadraticCurveTo(card3X, cardY + cardHeight, card3X, cardY + cardHeight - cardRadius);
+                        ctx.lineTo(card3X, cardY + cardRadius);
+                        ctx.quadraticCurveTo(card3X, cardY, card3X + cardRadius, cardY);
+                        ctx.closePath();
+                        ctx.fill();
+                        ctx.stroke();
+                        
+                        ctx.fillStyle = '#FFD700';
+                        ctx.font = '700 ' + (48 * scale) + 'px Space Grotesk, sans-serif';
+                        ctx.fillText('💡 For Everyone', 2440 * scale, cardY + 80 * scale);
+                        
+                        ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                        ctx.font = '400 ' + (32 * scale) + 'px Inter, sans-serif';
+                        ctx.fillText('Founders, professionals', 2440 * scale, cardY + 160 * scale);
+                        ctx.fillText('& creative thinkers.', 2440 * scale, cardY + 220 * scale);
+                        
+                        console.log('Ultra-HD canvas drawing complete, starting download...');
+                        
+                        const link = document.createElement('a');
+                        link.download = 'spremt-labs-stunning-banner-4k.png';
+                        link.href = canvas.toDataURL('image/png');
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        
+                        console.log('Ultra-HD download completed successfully');
+                    } catch (drawError) {
+                        console.error('Error drawing Ultra-HD canvas:', drawError);
+                        alert('Error creating Ultra-HD banner: ' + drawError.message);
+                    }
+                };
+                
+                logoImg.onerror = function() {
+                    console.error('Failed to load logo for Ultra-HD download');
+                    alert('Failed to load logo for Ultra-HD download. Please try the regular download instead.');
+                };
+                
+                logoImg.src = 'https://raw.githubusercontent.com/TracyKeogh/tracyspremt/main/public/spremtlogo2.png';
+                
+            } catch (error) {
+                console.error('Ultra-HD download error:', error);
+                alert('Ultra-HD download failed: ' + error.message);
+            }
+        }
+        
+        function takeScreenshot() {
+            alert('Right-click on the stunning banner above and select "Save image as..." to save the banner as an image file.');
+        }
+        
+        // Add html2canvas library for stunning banner capture
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>

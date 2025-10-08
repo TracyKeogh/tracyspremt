@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPREMT LABS Promotional Banner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .banner {
+            width: 1920px;
+            height: 1080px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #000000 100%);
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Animated background elements */
+        .bg-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(120, 219, 255, 0.05) 0%, transparent 50%);
+            animation: gradientShift 20s ease-in-out infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0);
+            background-size: 50px 50px;
+            animation: patternMove 30s linear infinite;
+        }
+        
+        @keyframes patternMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .logo-container {
+            position: absolute;
+            top: 60px;
+            left: 80px;
+            z-index: 10;
+        }
+        
+        .logo {
+            height: 100px;
+            width: auto;
+            max-width: 350px;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.1));
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover {
+            filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.2));
+            transform: scale(1.02);
+        }
+        
+        .content {
+            position: absolute;
+            top: 200px;
+            left: 80px;
+            right: 80px;
+            z-index: 10;
+        }
+        
+        .workshop-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            animation: badgeGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes badgeGlow {
+            0%, 100% { box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3); }
+            50% { box-shadow: 0 8px 35px rgba(102, 126, 234, 0.5); }
+        }
+        
+        .main-title {
+            color: white;
+            font-size: 84px;
+            font-weight: 900;
+            line-height: 0.95;
+            margin: 0 0 40px 0;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+            letter-spacing: -2px;
+            animation: titleGlow 4s ease-in-out infinite;
+        }
+        
+        @keyframes titleGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.1); }
+        }
+        
+        .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 32px;
+            font-weight: 400;
+            margin: 0 0 80px 0;
+            line-height: 1.4;
+            letter-spacing: -0.5px;
+            max-width: 800px;
+        }
+        
+        .features {
+            position: absolute;
+            bottom: 80px;
+            left: 80px;
+            right: 80px;
+            display: flex;
+            gap: 30px;
+            z-index: 10;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 35px;
+            border-radius: 24px;
+            flex: 1;
+            color: white;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 20px;
+            display: block;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+        }
+        
+        .feature-title {
+            font-weight: 700;
+            font-size: 22px;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .feature-desc {
+            font-size: 16px;
+            opacity: 0.85;
+            line-height: 1.5;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Floating elements */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            backdrop-filter: blur(10px);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            right: 15%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 25%;
+            animation-delay: 2s;
+        }
+        
+        .floating-element:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 30%;
+            right: 8%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .instructions {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 30px;
+            margin: 40px auto;
+            border-radius: 20px;
+            max-width: 1920px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .instructions h3 {
+            color: #1a1a1a;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .instructions p, .instructions li {
+            color: #4a4a4a;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .spec-item {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <!-- Animated background layers -->
+        <div class="bg-gradient"></div>
+        <div class="bg-pattern"></div>
+        
+        <!-- Floating decorative elements -->
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        
+        <!-- Your actual SPREMT LABS logo -->
+        <div class="logo-container">
+            <img src="https://github.com/TracyKeogh/tracyspremt/raw/main/public/spremtlogo2.png" alt="SPREMT LABS Logo" class="logo">
+        </div>
+        
+        <div class="content">
+            <div class="workshop-badge">HANDS-ON WORKSHOP</div>
+            <h1 class="main-title">Turn Your Idea Into Reality</h1>
+            <p class="subtitle">Build a working prototype in under 1 hour<br>— no coding experience needed</p>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon" style="color: #FFD700;">⚡</div>
+                <div class="feature-title">AI-Powered Tools</div>
+                <div class="feature-desc">Use Cursor, Bolt, Lovable & Claude to build fast.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="color: #FF6B6B;">🚀</div>
+                <div class="feature-title">Leave With Results</div>
+                <div class="feature-desc">Walk away with a live, working prototype.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="color: #4ECDC4;">💡</div>
+                <div class="feature-title">For Everyone</div>
+                <div class="feature-desc">Founders, professionals & creative thinkers.</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="instructions">
+        <h3>✨ Beautiful SPREMT LABS Eventbrite Header Banner</h3>
+        
+        <div class="spec-grid">
+            <div class="spec-item">
+                <h4>📐 Dimensions</h4>
+                <p>1920x1080 pixels - Perfect for Eventbrite headers</p>
+            </div>
+            <div class="spec-item">
+                <h4>🎨 Design Features</h4>
+                <p>Modern glassmorphism, animated gradients, floating elements</p>
+            </div>
+            <div class="spec-item">
+                <h4>✨ Visual Effects</h4>
+                <p>Subtle animations, glow effects, backdrop blur</p>
+            </div>
+            <div class="spec-item">
+                <h4>🔤 Typography</h4>
+                <p>Inter font family with gradient text effects</p>
+            </div>
+        </div>
+        
+        <p><strong>How to save your beautiful banner:</strong></p>
+        <ol>
+            <li><strong>Screenshot:</strong> Take a screenshot of just the banner above</li>
+            <li><strong>High-quality:</strong> Use your browser's developer tools for best quality</li>
+            <li><strong>Crop:</strong> Ensure it's exactly 1920x1080 pixels</li>
+            <li><strong>Ready to use:</strong> Upload directly to Eventbrite!</li>
+        </ol>
+        
+        <p><em>This banner features your actual SPREMT LABS logo with a stunning modern design that will make your event stand out!</em></p>
+    </div>
+</body>
+</html>
