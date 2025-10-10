@@ -1,542 +1,414 @@
 import React, { useState, useRef } from 'react';
 
-interface Feature {
-  title: string;
-  description: string;
-  icon: string;
-}
-
 const BannerGenerator: React.FC = () => {
-  const [companyName, setCompanyName] = useState('SPREMT LABS');
-  const [eventType, setEventType] = useState('HANDS-ON WORKSHOP');
-  const [mainTitle, setMainTitle] = useState('Turn Your Idea Into Reality');
-  const [subtitle, setSubtitle] = useState('Build a working prototype in under 1 hour — no coding experience needed');
-  const [features, setFeatures] = useState<Feature[]>([
-    { title: 'AI-Powered Tools', description: 'Use Cursor, Bolt, Lovable & Claude to build fast.', icon: '⚡' },
-    { title: 'Leave With Results', description: 'Walk away with a live, working prototype.', icon: '🚀' },
-    { title: 'For Everyone', description: 'Founders, professionals & creative thinkers.', icon: '💡' }
-  ]);
-  const [primaryColor, setPrimaryColor] = useState('#667eea');
-  const [secondaryColor, setSecondaryColor] = useState('#764ba2');
-  const [bannerSize, setBannerSize] = useState<'eventbrite' | 'social'>('eventbrite');
-  const [uploadedLogo, setUploadedLogo] = useState<string | null>(null);
-  const [logoFile, setLogoFile] = useState<File | null>(null);
+  const [description, setDescription] = useState('');
+  const [uploadedImage, setUploadedImage] = useState<string | null>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [generatedImage, setGeneratedImage] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [apiKey, setApiKey] = useState('');
+  const [showApiKeyInput, setShowApiKeyInput] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleLogoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
+      // Check file size (max 10MB)
+      if (file.size > 10 * 1024 * 1024) {
+        setError('Image file is too large. Please choose an image under 10MB.');
+        return;
+      }
+      
+      setImageFile(file);
       const reader = new FileReader();
       reader.onload = (e) => {
-        setUploadedLogo(e.target?.result as string);
-        setLogoFile(file);
+        setUploadedImage(e.target?.result as string);
+        setError(null);
       };
       reader.readAsDataURL(file);
     }
   };
 
-  const removeLogo = () => {
-    setUploadedLogo(null);
-    setLogoFile(null);
+  const removeImage = () => {
+    setUploadedImage(null);
+    setImageFile(null);
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
   };
 
-  const addFeature = () => {
-    setFeatures([...features, { title: '', description: '', icon: '✨' }]);
-  };
-
-  const removeFeature = (index: number) => {
-    setFeatures(features.filter((_, i) => i !== index));
-  };
-
-  const updateFeature = (index: number, field: keyof Feature, value: string) => {
-    const newFeatures = features.map((feature, i) => 
-      i === index ? { ...feature, [field]: value } : feature
-    );
-    setFeatures(newFeatures);
-  };
-
-  const applyTemplate = (template: string) => {
-    switch (template) {
-      case 'workshop':
-        setEventType('HANDS-ON WORKSHOP');
-        setMainTitle('Turn Your Idea Into Reality');
-        setSubtitle('Build a working prototype in under 1 hour — no coding experience needed');
-        setFeatures([
-          { title: 'AI-Powered Tools', description: 'Use Cursor, Bolt, Lovable & Claude to build fast.', icon: '⚡' },
-          { title: 'Leave With Results', description: 'Walk away with a live, working prototype.', icon: '🚀' },
-          { title: 'For Everyone', description: 'Founders, professionals & creative thinkers.', icon: '💡' }
-        ]);
-        setPrimaryColor('#667eea');
-        setSecondaryColor('#764ba2');
-        break;
-      case 'conference':
-        setEventType('CONFERENCE');
-        setMainTitle('The Future of AI');
-        setSubtitle('Join industry leaders exploring the latest in artificial intelligence');
-        setFeatures([
-          { title: 'Expert Speakers', description: 'Learn from top AI researchers and practitioners.', icon: '🎤' },
-          { title: 'Networking', description: 'Connect with like-minded professionals.', icon: '🤝' },
-          { title: 'Latest Trends', description: 'Discover cutting-edge AI technologies.', icon: '🚀' }
-        ]);
-        setPrimaryColor('#ff6b6b');
-        setSecondaryColor('#4ecdc4');
-        break;
-      case 'product':
-        setEventType('PRODUCT LAUNCH');
-        setMainTitle('Introducing Our Latest Innovation');
-        setSubtitle('Revolutionary technology that changes everything');
-        setFeatures([
-          { title: 'Breakthrough Features', description: 'See what makes this product special.', icon: '✨' },
-          { title: 'Live Demo', description: 'Experience the product in action.', icon: '🎮' },
-          { title: 'Early Access', description: 'Be among the first to try it.', icon: '🔑' }
-        ]);
-        setPrimaryColor('#a8edea');
-        setSecondaryColor('#fed6e3');
-        break;
-    }
-  };
-
-  const updateColors = (colorType: 'primary' | 'secondary', color: string) => {
-    if (colorType === 'primary') {
-      setPrimaryColor(color);
-    } else {
-      setSecondaryColor(color);
-    }
-  };
-
-  const handleSizeChange = (size: 'eventbrite' | 'social') => {
-    setBannerSize(size);
-  };
-
-  const downloadBanner = () => {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    
-    if (!ctx) return;
-
-    // Set canvas size based on banner type
-    if (bannerSize === 'eventbrite') {
-      canvas.width = 1920;
-      canvas.height = 1080;
-    } else {
-      canvas.width = 1200;
-      canvas.height = 630;
+  const generateWithOpenAI = async () => {
+    if (!description.trim()) {
+      setError('Please enter a description for your image.');
+      return;
     }
 
-    // Create gradient background
-    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    gradient.addColorStop(0, primaryColor);
-    gradient.addColorStop(1, secondaryColor);
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Add logo if uploaded
-    if (uploadedLogo) {
-      const logoImg = new Image();
-      logoImg.onload = () => {
-        const logoSize = Math.min(canvas.width * 0.15, canvas.height * 0.15);
-        const logoX = canvas.width * 0.05;
-        const logoY = canvas.height * 0.05;
-        ctx.drawImage(logoImg, logoX, logoY, logoSize, logoSize);
-        drawTextElements(ctx, canvas.width, canvas.height);
-      };
-      logoImg.src = uploadedLogo;
-    } else {
-      drawTextElements(ctx, canvas.width, canvas.height);
+    if (!apiKey.trim()) {
+      setError('Please provide your OpenAI API key. Click "Settings" to add it.');
+      setShowApiKeyInput(true);
+      return;
     }
 
-    function drawTextElements(ctx: CanvasRenderingContext2D, width: number, height: number) {
-      // Event type badge
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
-      ctx.fillRect(width * 0.05, height * 0.15, width * 0.25, height * 0.08);
+    setIsGenerating(true);
+    setError(null);
+
+    try {
+      let finalPrompt = description;
       
-      ctx.fillStyle = 'white';
-      ctx.font = `bold ${height * 0.025}px Arial`;
-      ctx.textAlign = 'center';
-      ctx.fillText(eventType, width * 0.175, height * 0.195);
+      // If user uploaded an image, we'll need to composite it
+      // For now, we'll enhance the prompt to include the logo
+      if (uploadedImage) {
+        finalPrompt = `${description}. The image should include space for a company logo in the top left corner. Professional, modern design.`;
+      }
 
-      // Main title
-      ctx.font = `bold ${height * 0.08}px Arial`;
-      ctx.fillText(mainTitle, width * 0.5, height * 0.4);
-
-      // Subtitle
-      ctx.font = `${height * 0.03}px Arial`;
-      ctx.fillText(subtitle, width * 0.5, height * 0.5);
-
-      // Features
-      const featureWidth = width * 0.25;
-      const featureHeight = height * 0.15;
-      const startX = width * 0.05;
-      const startY = height * 0.7;
-
-      features.forEach((feature, index) => {
-        const x = startX + (index * (featureWidth + width * 0.05));
-        
-        // Feature card background
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
-        ctx.fillRect(x, startY, featureWidth, featureHeight);
-        
-        // Feature icon
-        ctx.font = `${height * 0.04}px Arial`;
-        ctx.fillText(feature.icon, x + featureWidth * 0.5, startY + height * 0.03);
-        
-        // Feature title
-        ctx.font = `bold ${height * 0.025}px Arial`;
-        ctx.fillText(feature.title, x + featureWidth * 0.5, startY + height * 0.06);
-        
-        // Feature description
-        ctx.font = `${height * 0.02}px Arial`;
-        ctx.fillText(feature.description, x + featureWidth * 0.5, startY + height * 0.09);
+      // Call OpenAI DALL-E API
+      const response = await fetch('https://api.openai.com/v1/images/generations', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+          model: 'dall-e-3',
+          prompt: finalPrompt,
+          n: 1,
+          size: '1792x1024', // Closest to 1920x1080
+          quality: 'hd'
+        })
       });
 
-      // Download the image
-      const link = document.createElement('a');
-      link.download = `banner-${Date.now()}.png`;
-      link.href = canvas.toDataURL();
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error?.message || 'Failed to generate image');
+      }
+
+      const data = await response.json();
+      const generatedUrl = data.data[0].url;
+
+      // If user uploaded a logo, composite it with the generated image
+      if (uploadedImage) {
+        await compositeLogoOnImage(generatedUrl);
+      } else {
+        setGeneratedImage(generatedUrl);
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to generate image. Please check your API key and try again.');
+      console.error('Generation error:', err);
+    } finally {
+      setIsGenerating(false);
     }
+  };
+
+  const compositeLogoOnImage = async (generatedImageUrl: string) => {
+    try {
+      // Create a canvas to composite the images
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      
+      if (!ctx) {
+        throw new Error('Failed to get canvas context');
+      }
+
+      // Load the generated image
+      const bgImage = new Image();
+      bgImage.crossOrigin = 'anonymous';
+      
+      await new Promise((resolve, reject) => {
+        bgImage.onload = resolve;
+        bgImage.onerror = reject;
+        bgImage.src = generatedImageUrl;
+      });
+
+      // Set canvas size
+      canvas.width = bgImage.width;
+      canvas.height = bgImage.height;
+
+      // Draw the generated image
+      ctx.drawImage(bgImage, 0, 0);
+
+      // Load and draw the logo
+      if (uploadedImage) {
+        const logoImage = new Image();
+        
+        await new Promise((resolve, reject) => {
+          logoImage.onload = resolve;
+          logoImage.onerror = reject;
+          logoImage.src = uploadedImage;
+        });
+
+        // Position logo in top-left corner (adjust as needed)
+        const logoSize = Math.min(canvas.width * 0.15, canvas.height * 0.15);
+        const padding = canvas.width * 0.03;
+        
+        ctx.drawImage(logoImage, padding, padding, logoSize, logoSize);
+      }
+
+      // Convert to data URL
+      const compositeImage = canvas.toDataURL('image/png');
+      setGeneratedImage(compositeImage);
+    } catch (err) {
+      console.error('Error compositing image:', err);
+      // If compositing fails, just show the generated image without logo
+      setGeneratedImage(generatedImageUrl);
+    }
+  };
+
+  const downloadImage = () => {
+    if (!generatedImage) return;
+
+    const link = document.createElement('a');
+    link.download = `ai-generated-banner-${Date.now()}.png`;
+    link.href = generatedImage;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleExample = (exampleText: string) => {
+    setDescription(exampleText);
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12">
       <div className="container mx-auto px-6">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           
           {/* Header */}
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-light text-gray-800 mb-4">
-              Visual Banner Designer
+              AI Image Maker
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Design professional banners like Claude does - with code and templates, but add your own images and customize everything.
+              Describe what you want, upload your logo, and let AI create a professional image for you.
+            </p>
+            <p className="text-sm text-gray-500 mt-2">
+              Powered by OpenAI DALL-E 3
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          {/* API Key Settings */}
+          {showApiKeyInput && (
+            <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6 mb-6">
+              <div className="flex items-start gap-3">
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">OpenAI API Key Required</h3>
+                  <p className="text-sm text-gray-600 mb-4">
+                    To use AI image generation, you need an OpenAI API key. Get one at{' '}
+                    <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                      platform.openai.com/api-keys
+                    </a>
+                  </p>
+                  <input
+                    type="password"
+                    value={apiKey}
+                    onChange={(e) => setApiKey(e.target.value)}
+                    placeholder="sk-..."
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-sm"
+                  />
+                  <p className="text-xs text-gray-500 mt-2">
+                    Your API key is stored locally in your browser and never sent to our servers.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setShowApiKeyInput(false)}
+                  className="text-gray-400 hover:text-gray-600"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+          )}
+
+          <div className="grid lg:grid-cols-2 gap-8">
             
-            {/* Controls Panel */}
-            <div className="lg:col-span-1 space-y-6">
+            {/* Input Panel */}
+            <div className="space-y-6">
               
+              {/* Description Input */}
+              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">Describe Your Image</h3>
+                
+                <textarea
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="Example: Create an Eventbrite banner for a hands-on AI workshop. Modern, professional design with purple gradient background. Include space for company logo. Text should say 'Turn Your Idea Into Reality' as the main title and 'Build a working prototype in under 1 hour' as subtitle..."
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                  rows={8}
+                />
+                
+                <div className="mt-4">
+                  <p className="text-sm font-medium text-gray-700 mb-2">Quick Examples:</p>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      onClick={() => handleExample('Create an Eventbrite banner for a hands-on AI workshop. Modern, professional design with purple gradient background. Include space for company logo. Main title: "Turn Your Idea Into Reality". Subtitle: "Build a working prototype in under 1 hour - no coding experience needed". Include 3 feature cards at the bottom with icons for AI tools, results, and accessibility.')}
+                      className="text-sm px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700 transition-colors"
+                    >
+                      Workshop Banner
+                    </button>
+                    <button
+                      onClick={() => handleExample('Create a social media banner for a tech conference. Futuristic design with blue and teal gradient. Space for logo in top left. Main heading: "The Future of AI". Subtitle: "Join industry leaders exploring artificial intelligence". Professional, clean, modern aesthetic.')}
+                      className="text-sm px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700 transition-colors"
+                    >
+                      Conference Banner
+                    </button>
+                    <button
+                      onClick={() => handleExample('Create a product launch banner. Vibrant, eye-catching design. Space for company logo. Bold text: "Introducing Our Latest Innovation". Sleek, modern, premium feel. 1920x1080 dimensions.')}
+                      className="text-sm px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700 transition-colors"
+                    >
+                      Product Launch
+                    </button>
+                  </div>
+                </div>
+              </div>
+
               {/* Logo Upload */}
               <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Company Logo</h3>
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                  Upload Your Logo <span className="text-sm font-normal text-gray-500">(Optional)</span>
+                </h3>
                 
-                {!uploadedLogo ? (
-                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors">
+                {!uploadedImage ? (
+                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-400 transition-colors cursor-pointer">
                     <input
                       ref={fileInputRef}
                       type="file"
                       accept="image/*"
-                      onChange={handleLogoUpload}
+                      onChange={handleImageUpload}
                       className="hidden"
                     />
                     <button
                       onClick={() => fileInputRef.current?.click()}
                       className="text-blue-600 hover:text-blue-700 font-medium"
                     >
-                      Upload Logo
+                      📁 Choose File
                     </button>
                     <p className="text-gray-500 text-sm mt-2">
-                      PNG, JPG up to 5MB
+                      PNG, JPG up to 10MB
+                    </p>
+                    <p className="text-gray-400 text-xs mt-1">
+                      Your logo will be integrated into the generated image
                     </p>
                   </div>
                 ) : (
-                  <div className="relative">
+                  <div className="relative border border-gray-200 rounded-lg p-4">
                     <img
-                      src={uploadedLogo}
-                      alt="Logo"
-                      className="w-full h-32 object-contain rounded-lg"
+                      src={uploadedImage}
+                      alt="Uploaded"
+                      className="w-full h-32 object-contain rounded"
                     />
                     <button
-                      onClick={removeLogo}
-                      className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600 transition-colors"
+                      onClick={removeImage}
+                      className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-600 transition-colors shadow-lg"
                     >
-                      ×
+                      ✕
                     </button>
                   </div>
                 )}
               </div>
 
-              {/* Quick Templates */}
+              {/* Settings */}
               <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Quick Templates</h3>
-                <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800">API Settings</h3>
+                    <p className="text-sm text-gray-500">
+                      {apiKey ? '✓ API key configured' : 'No API key set'}
+                    </p>
+                  </div>
                   <button
-                    onClick={() => applyTemplate('workshop')}
-                    className="w-full text-left p-3 rounded-lg border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-colors"
+                    onClick={() => setShowApiKeyInput(!showApiKeyInput)}
+                    className="text-blue-600 hover:text-blue-700 font-medium"
                   >
-                    <div className="font-medium">Workshop</div>
-                    <div className="text-sm text-gray-600">AI tools, prototyping</div>
-                  </button>
-                  <button
-                    onClick={() => applyTemplate('conference')}
-                    className="w-full text-left p-3 rounded-lg border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-colors"
-                  >
-                    <div className="font-medium">Conference</div>
-                    <div className="text-sm text-gray-600">Speaking, networking</div>
-                  </button>
-                  <button
-                    onClick={() => applyTemplate('product')}
-                    className="w-full text-left p-3 rounded-lg border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-colors"
-                  >
-                    <div className="font-medium">Product Launch</div>
-                    <div className="text-sm text-gray-600">New features, demos</div>
+                    ⚙️ Settings
                   </button>
                 </div>
               </div>
 
-              {/* Basic Info */}
-              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Basic Info</h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Company Name</label>
-                    <input
-                      type="text"
-                      value={companyName}
-                      onChange={(e) => setCompanyName(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Event Type</label>
-                    <input
-                      type="text"
-                      value={eventType}
-                      onChange={(e) => setEventType(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Main Title</label>
-                    <input
-                      type="text"
-                      value={mainTitle}
-                      onChange={(e) => setMainTitle(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Subtitle</label>
-                    <textarea
-                      value={subtitle}
-                      onChange={(e) => setSubtitle(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                      rows={3}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Features */}
-              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-gray-800">Features</h3>
-                  <button
-                    onClick={addFeature}
-                    className="text-blue-600 hover:text-blue-700 font-medium text-sm"
-                  >
-                    + Add Feature
-                  </button>
-                </div>
-                
-                <div className="space-y-4">
-                  {features.map((feature, index) => (
-                    <div key={index} className="border border-gray-200 rounded-lg p-4">
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="text-sm font-medium text-gray-700">Feature {index + 1}</span>
-                        <button
-                          onClick={() => removeFeature(index)}
-                          className="text-red-500 hover:text-red-700 text-sm"
-                        >
-                          Remove
-                        </button>
-                      </div>
-                      
-                      <div className="space-y-3">
-                        <input
-                          type="text"
-                          value={feature.icon}
-                          onChange={(e) => updateFeature(index, 'icon', e.target.value)}
-                          placeholder="Icon (emoji)"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-center"
-                        />
-                        <input
-                          type="text"
-                          value={feature.title}
-                          onChange={(e) => updateFeature(index, 'title', e.target.value)}
-                          placeholder="Feature title"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        />
-                        <textarea
-                          value={feature.description}
-                          onChange={(e) => updateFeature(index, 'description', e.target.value)}
-                          placeholder="Feature description"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                          rows={2}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Colors */}
-              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Colors</h3>
-                
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Primary Color</label>
-                    <div className="flex items-center gap-3">
-                      <input
-                        type="color"
-                        value={primaryColor}
-                        onChange={(e) => updateColors('primary', e.target.value)}
-                        className="w-12 h-10 border border-gray-300 rounded cursor-pointer"
-                      />
-                      <input
-                        type="text"
-                        value={primaryColor}
-                        onChange={(e) => updateColors('primary', e.target.value)}
-                        className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-sm"
-                      />
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Secondary Color</label>
-                    <div className="flex items-center gap-3">
-                      <input
-                        type="color"
-                        value={secondaryColor}
-                        onChange={(e) => updateColors('secondary', e.target.value)}
-                        className="w-12 h-10 border border-gray-300 rounded cursor-pointer"
-                      />
-                      <input
-                        type="text"
-                        value={secondaryColor}
-                        onChange={(e) => updateColors('secondary', e.target.value)}
-                        className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-sm"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Size */}
-              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Banner Size</h3>
-                
-                <div className="space-y-2">
-                  <label className="flex items-center p-3 rounded-lg border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-colors cursor-pointer">
-                    <input
-                      type="radio"
-                      name="size"
-                      value="eventbrite"
-                      checked={bannerSize === 'eventbrite'}
-                      onChange={(e) => handleSizeChange(e.target.value as 'eventbrite')}
-                      className="mr-3"
-                    />
-                    <div>
-                      <div className="font-medium">Eventbrite (1920×1080)</div>
-                      <div className="text-sm text-gray-600">Standard event banner</div>
-                    </div>
-                  </label>
-                  
-                  <label className="flex items-center p-3 rounded-lg border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-colors cursor-pointer">
-                    <input
-                      type="radio"
-                      name="size"
-                      value="social"
-                      checked={bannerSize === 'social'}
-                      onChange={(e) => handleSizeChange(e.target.value as 'social')}
-                      className="mr-3"
-                    />
-                    <div>
-                      <div className="font-medium">Social Media (1200×630)</div>
-                      <div className="text-sm text-gray-600">Facebook, LinkedIn</div>
-                    </div>
-                  </label>
-                </div>
-              </div>
-
-              {/* Download */}
+              {/* Generate Button */}
               <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                 <button
-                  onClick={downloadBanner}
-                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                  onClick={generateWithOpenAI}
+                  disabled={isGenerating || !description.trim()}
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-6 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
                 >
-                  Download Banner
+                  {isGenerating ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                      </svg>
+                      Generating with AI...
+                    </span>
+                  ) : (
+                    '✨ Generate Image with AI'
+                  )}
                 </button>
-                <p className="text-gray-600 text-sm mt-2 text-center">
-                  High-quality PNG image
-                </p>
+                
+                {error && (
+                  <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+                    <p className="text-sm text-red-600">{error}</p>
+                  </div>
+                )}
               </div>
             </div>
 
-            {/* Preview Panel */}
-            <div className="lg:col-span-2">
+            {/* Preview/Result Panel */}
+            <div className="space-y-6">
               <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sticky top-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Live Preview</h3>
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">Generated Image</h3>
                 
-                <div className="relative overflow-hidden rounded-xl border border-gray-200" style={{ aspectRatio: bannerSize === 'eventbrite' ? '16/9' : '1.91/1' }}>
-                  <div 
-                    className="w-full h-full relative"
-                    style={{
-                      background: `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`,
-                      minHeight: bannerSize === 'eventbrite' ? '400px' : '300px'
-                    }}
-                  >
-                    {/* Logo */}
-                    {uploadedLogo && (
-                      <div className="absolute top-4 left-4">
-                        <img
-                          src={uploadedLogo}
-                          alt="Logo"
-                          className="h-12 w-auto object-contain"
-                        />
-                      </div>
-                    )}
-
-                    {/* Event Type Badge */}
-                    <div className="absolute top-16 left-4 bg-white bg-opacity-20 backdrop-blur-sm px-4 py-2 rounded-full">
-                      <span className="text-white text-sm font-semibold">{eventType}</span>
-                    </div>
-
-                    {/* Main Title */}
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center px-8">
-                      <h1 className="text-white text-2xl md:text-4xl font-bold mb-4 leading-tight">
-                        {mainTitle}
-                      </h1>
-                      <p className="text-white text-lg opacity-90 leading-relaxed">
-                        {subtitle}
-                      </p>
-                    </div>
-
-                    {/* Features */}
-                    <div className="absolute bottom-4 left-4 right-4 flex gap-4">
-                      {features.map((feature, index) => (
-                        <div key={index} className="flex-1 bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-4">
-                          <div className="text-white text-center">
-                            <div className="text-2xl mb-2">{feature.icon}</div>
-                            <div className="font-semibold text-sm mb-1">{feature.title}</div>
-                            <div className="text-xs opacity-80">{feature.description}</div>
-                          </div>
-                        </div>
-                      ))}
+                {!generatedImage ? (
+                  <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center">
+                    <div className="text-center text-gray-400">
+                      <svg className="w-16 h-16 mx-auto mb-3 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      <p className="text-sm">Your generated image will appear here</p>
                     </div>
                   </div>
-                </div>
+                ) : (
+                  <div>
+                    <img
+                      src={generatedImage}
+                      alt="Generated"
+                      className="w-full rounded-lg shadow-lg"
+                    />
+                    <button
+                      onClick={downloadImage}
+                      className="w-full mt-4 bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                    >
+                      ⬇️ Download Image
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* Tips */}
+              <div className="bg-blue-50 rounded-2xl p-6">
+                <h4 className="font-semibold text-gray-800 mb-3">💡 Tips for Best Results</h4>
+                <ul className="space-y-2 text-sm text-gray-600">
+                  <li className="flex gap-2">
+                    <span>•</span>
+                    <span>Be specific about colors, style, and layout</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span>•</span>
+                    <span>Mention exact text you want to appear</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span>•</span>
+                    <span>Include "space for logo" in your description</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span>•</span>
+                    <span>Specify dimensions (e.g., "1920x1080")</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span>•</span>
+                    <span>Describe the mood/feel (professional, fun, modern)</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
